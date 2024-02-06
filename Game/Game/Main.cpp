@@ -1,7 +1,6 @@
 //This entire game is still getting made, so update each function accordingly, as time progresses
 //This menu is only a development menu for the time being
 
-
 #include <iostream>
 
 using namespace std;
