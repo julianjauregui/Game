@@ -1,6 +1,8 @@
 //This entire game is still getting made, so update each function accordingly, as time progresses
 //This menu is only a development menu for the time being
 
+//This is a test comment, I just want to make sure that things are actually working
+
 #include <iostream>
 
 using namespace std;
