@@ -3,6 +3,9 @@
 
 #include <iostream>
 
+//THIS IS THE LIBRARY TO INCLUDE IN ORDER TO WIPE SCREEN (USE system("cls"); IN ORDER TO CLEAR THE SCREEN)
+#include <stdlib.h>
+
 using namespace std;
 
 
@@ -49,36 +52,49 @@ int main() {
 
 			//The first case is the overworld function, which returns to the overworld
 		case 1:
+			//clears screen and then calls overworld function
+			system("cls");
 			returnToOverworld();
 			break;
 
 			//The second option is the enter battle function, which is called to enter and fight a battle
 		case 2:
+			//clears screen and then calls enter battle function
+			system("cls");
 			enterBattle();
 			break;
 
 			//The third option is the inventory function, that is called to manage and change and view the player's inventory
 		case 3:
+			//clears screen and then calls manage inventory
+			system("cls");
 			manageInventory();
 			break;
 
 			//The fourth option is the enter shop function, which is called to enter a shop and interact with it
 		case 4:
+			//clears screen and then calls enter shop function
+			system("cls");
 			enterShop();
 			break;
 
 			//The fifth option is the chat function, which is made to chat with other game characters in the game
 		case 5:
+			//clears screen and then calls chat function
+			system("cls");
 			chat();
 			break;
 
 			//The sixth option is the quit game option, which makes the user leave the game
 		case 6:
+			//clears screen and then calls quit game function
+			system("cls");
 			quitGame();
 			break;
 
 			//If something other than 1-6 was entered, it displays that the option was invalid and it returns to the main menu selection at the top
 		default:
+			//doesn't clear screen because the user should be able to see that his input was incorrect so as to not repeat it
 			cout << "The selection you chose was invalid. Please choose again." << endl;
 
 		}
