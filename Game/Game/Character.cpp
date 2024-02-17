@@ -31,6 +31,12 @@ int Character::getFame()
     return fame;
 }
 
+//Returns attacks from Character
+vector<Attack> Character::getAttacks()
+{
+    return attacks;
+}
+
 //Setter for health, sets Health equal to life
 void Character::setHealth(int life)
 {
@@ -61,6 +67,42 @@ void Character::setFame(int influence)
     fame = influence;
 }
 
+//sets attacks equal to moves input and returns nothing
+void Character::setAttacks(vector<Attack> moves)
+{
+    attacks = moves;
+}
 
 
+//Adds move input to the list of attacks
+void Character::addAttack(Attack move)
+{
+    attacks.push_back(move);
+}
+
+
+//Returns all the information of a character in string form
+string Character::toString()
+{
+    //Creates the basic output string:
+    //"$NAME has $HEALTH amount of health and has an attack stat of $DAMAGE and a defense stat of $DEFENSE. His attacks are as follows: 
+    string output = name + " has " + to_string(health) + " amount of health " + " and has an attack stat of " + to_string(damage) + " and a defense stat of " + to_string(defense) + " as well as a fame stat of " + to_string(fame) + ". His attacks are as follows: ";
+    //Adds attacks to output
+    output += printAttacks();
+    return output;
+}
+
+//Returns all the attacks with each attack on its own line
+string Character::printAttacks()
+{
+    //sets output to empty string
+    string output = "";
+    //iterates through every attack in attacks
+    for (Attack index : attacks) {
+        //uses the toString functions for attacks and adds that to output
+        output += "\n" + index.toString(damage, defense);
+    }
+    //returns output
+    return output;
+}
 

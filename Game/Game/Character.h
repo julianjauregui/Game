@@ -5,6 +5,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "Attack.h"
 using namespace std;
 
 class Character
@@ -23,6 +24,8 @@ protected:
 	//Fame is defined as how famous the character is in the overworld, or how much infuluence he has, or how many people know of him
 	//Every character will have fame, but it primarilly affects the player and the enemies
 	int fame;
+	//Vector of attacks that will be used in battles
+	vector<Attack> attacks{};
 
 public:
 	//Creates a character, with health, damage, defense, name, and fame stats
@@ -49,6 +52,8 @@ public:
 	string getName();
 	//Getter of fame, implemented in the Character.cpp file
 	int getFame();
+	//Getter of attacks, implemented in Character.cpp file
+	vector<Attack> getAttacks();
 
 	//Setter for the health, implemented in the Character.cpp file
 	void setHealth(int life);
@@ -60,6 +65,14 @@ public:
 	void setName(string nomen);
 	//Setter for the fame, implemented in the Character.spp file
 	void setFame(int influence);
+	//Setter for attacks, implemented in Character.cpp file
+	void setAttacks(vector<Attack> moves);
 
+	//Adds move to attacks vector
+	void addAttack(Attack move);
+	//Outputs the character with all their information
+	string toString();
+	//Outputs all the attacks in a list with each attack on a new line (Primarily used as a helper function for the above)
+	string printAttacks();
 };
 
