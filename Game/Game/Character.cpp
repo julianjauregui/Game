@@ -37,6 +37,12 @@ vector<Attack> Character::getAttacks()
     return attacks;
 }
 
+//returns year that the character is in
+int Character::getYear()
+{
+    return year;
+}
+
 //Setter for health, sets Health equal to life
 void Character::setHealth(int life)
 {
@@ -71,6 +77,12 @@ void Character::setFame(int influence)
 void Character::setAttacks(vector<Attack> moves)
 {
     attacks = moves;
+}
+
+//sets year equal to anno
+void Character::setYear(int anno)
+{
+    year = anno;
 }
 
 

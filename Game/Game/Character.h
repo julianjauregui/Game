@@ -26,10 +26,12 @@ protected:
 	int fame;
 	//Vector of attacks that will be used in battles
 	vector<Attack> attacks{};
+	//Year that the character is in
+	int year;
 
 public:
-	//Creates a character, with health, damage, defense, name, and fame stats
-	Character(int life, int attack, int def, string nomen, int influence) {
+	//Creates a character, with health, damage, defense, name, fame, and year stats
+	Character(int life, int attack, int def, string nomen, int influence, int anno) {
 		//sets health equal to the life input
 		health = life;
 		//sets damage equal to the attack input
@@ -40,6 +42,8 @@ public:
 		name = nomen;
 		//sets fame equal to the influence input
 		fame = influence;
+		//sets year equal to anno input
+		year = anno;
 	}
 
 	//Getter for health, implemented in the Character.cpp file
@@ -54,6 +58,8 @@ public:
 	int getFame();
 	//Getter of attacks, implemented in Character.cpp file
 	vector<Attack> getAttacks();
+	//Getter of year, implemented in Character.cpp file
+	int getYear();
 
 	//Setter for the health, implemented in the Character.cpp file
 	void setHealth(int life);
@@ -67,6 +73,8 @@ public:
 	void setFame(int influence);
 	//Setter for attacks, implemented in Character.cpp file
 	void setAttacks(vector<Attack> moves);
+	//Setter for year, implemented in Character.cpp file
+	void setYear(int anno);
 
 	//Adds move to attacks vector
 	void addAttack(Attack move);
