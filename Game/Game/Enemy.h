@@ -10,5 +10,8 @@ protected:
 public:
     //The same constructor, for now, as the character class
     Enemy(int life, int attack, int def, string nomen, int influence) :Character(life, attack, def, nomen, influence) {};
+
+    static Enemy generateEnemy(); //generates random enemy.  takes nothing in, creates an enemy with randiomly selected name, randomizes other character stats
+    Attack chooseAttack(); //function that overides virtual function in character
 };
 

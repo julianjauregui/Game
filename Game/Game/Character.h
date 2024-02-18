@@ -3,6 +3,7 @@
 
 //Includes every header that is predicted to be used for any character subclass and functions
 #pragma once
+#include "Attack.h"
 #include <string>
 #include <vector>
 using namespace std;
@@ -23,6 +24,9 @@ protected:
 	//Fame is defined as how famous the character is in the overworld, or how much infuluence he has, or how many people know of him
 	//Every character will have fame, but it primarilly affects the player and the enemies
 	int fame;
+
+	//vector from attack allows character to have multiple attack options
+	std::vector<Attack> specialAttacks;
 
 public:
 	//Creates a character, with health, damage, defense, name, and fame stats
@@ -60,6 +64,10 @@ public:
 	void setName(string nomen);
 	//Setter for the fame, implemented in the Character.spp file
 	void setFame(int influence);
+	//shows attacks that a characterr can execute, takes nothing
+	void displayAttacks();
+	//takes nothing, usage has yet to be determined, will vary by character
+	virtual Attack chooseAttack();
 
 };
 

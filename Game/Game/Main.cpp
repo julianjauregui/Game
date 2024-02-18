@@ -2,6 +2,9 @@
 //This menu is only a development menu for the time being
 
 #include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
 
 //THIS IS THE LIBRARY TO INCLUDE IN ORDER TO WIPE SCREEN (USE system("cls"); IN ORDER TO CLEAR THE SCREEN)
 #include <stdlib.h>

@@ -1,3 +1,8 @@
+
+
+
+
+
 //Imlementation of the Character class, from the Character.h file
 #include "Character.h"
 
@@ -61,6 +66,13 @@ void Character::setFame(int influence)
     fame = influence;
 }
 
-
-
-
+//shows attacks that a characterr can execute, takes nothing
+void displayAttacks()
+{
+    std::cout << name << "'s special attacks:" << std::endl;
+    for (const auto& attack : specialAttacks) {
+        std::cout << "- " << attack.name << " (Damage: " << attack.damage << ")" << std::endl;
+    }
+}
+//takes nothing, usage has yet to be determined, will vary by character
+virtual Attack chooseAttack() = 0;
