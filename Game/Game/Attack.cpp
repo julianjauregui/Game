@@ -12,7 +12,7 @@ double Attack::getDefenseMultiplier()
 {
 	return defenseMultiplier;
 }
-\
+
 //returns name of attack
 string Attack::getName()
 {
