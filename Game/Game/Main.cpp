@@ -1,6 +1,7 @@
 //This entire game is still getting made, so update each function accordingly, as time progresses
 //This menu is only a development menu for the time being
-
+#include "Player.h"
+#include "Enemy.h"
 #include <iostream>
 #include <vector>
 #include <cstdlib>
@@ -113,7 +114,41 @@ void returnToOverworld() {
 
 //This enterBattle function is still in production, so it says so
 void enterBattle() {
-	cout << "Sorry, it appears that battles are not yet able to be fought." << endl;
+	
+	Player.generatePlayer();
+	Enemy.generateEnemy();
+
+	// Create player and enemy, add attacks
+	Player Player(100,100,100,"Dwight Eisenhower", 75);
+	Enemy Enemy(100,100,100,"George Washington", 99);
+
+	std::cout << "A wild " << enemy.name << " appeared!" << std::endl;
+
+	while (Player.health > 0 && Enemy.health > 0) {
+		// Player's turn
+		Attack playerAttack = Player.chooseAttack();
+		std::cout << Player.name << " used " << playerAttack.name << "!" << std::endl;
+		Enemy.health -= playerAttack.damage;
+		std::cout << Enemy.name << " health: " << Enemy.health << std::endl;
+
+		if (Enemy.health <= 0) {
+			std::cout << "Congratulations! You defeated the " << Enemy.name << "!" << std::endl;
+			break;
+		}
+
+		// Enemy's turn
+		Attack enemyAttack = Enemy.chooseAttack();
+		std::cout << Enemy.name << " used " << enemyAttack.name << "!" << std::endl;
+		player.health -= enemyAttack.damage;
+		std::cout << Player.name << " health: " << Player.health << std::endl;
+
+		if (Player.health <= 0) {
+			std::cout << "Game over! " << Enemy.name << " defeated you." << std::endl;
+			break;
+		}
+	}
+
+	return 0;
 }
 
 //This manage inventory function is still in production, so it says so

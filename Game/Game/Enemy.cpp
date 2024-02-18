@@ -5,9 +5,9 @@
 //generates random enemy.  takes nothing in, creates an enemy with randiomly selected name, randomizes other character stats
 static Enemy generateEnemy() 
 {
-    std::string names[] = { "Goblin", "Skeleton", "Orc", "Troll" };
-    int index = rand() % 4;
-    return Enemy(names[index], rand() % 20 + 10, rand() % 5 + 5); //not right, needs to reflect the right stats that apply to character.  dummy names are being used at present.  implement thenright constructor too
+    std::string names[] = { "George Washington", "Thomas Jefferson", "Andrew Jackson", "James Polk", "Abraham Lincoln", "Theodore Roosevelt", "Woodrow Wilson", "FDR", "Harry Truman", "Dwight Eisenhower", "Millard Fillmore"};
+    int index = rand() % 11+1;
+    return Enemy(rand() % 100+1, rand() % 100 + 1, rand() % 100 + 1, ames[index], rand() % 100 + 1); //not right, needs to reflect the right stats that apply to character.  dummy names are being used at present.  implement thenright constructor too
 }
 
 //function that overides virtual function in character. enemy randomly chooses his own attack!!!!!
