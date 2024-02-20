@@ -31,5 +31,8 @@ public:
 	void setDefenseMultiplier(double defense);
 	//sets the name equal to nomen
 	void setName(string nomen);
+
+	//returns the attack in string form
+	string toString(double damage, double def);
 };
 

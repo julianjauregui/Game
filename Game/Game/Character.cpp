@@ -36,6 +36,18 @@ int Character::getFame()
     return fame;
 }
 
+//Returns attacks from Character
+vector<Attack> Character::getAttacks()
+{
+    return attacks;
+}
+
+//returns year that the character is in
+int Character::getYear()
+{
+    return year;
+}
+
 //Setter for health, sets Health equal to life
 void Character::setHealth(int life)
 {
@@ -76,3 +88,49 @@ void displayAttacks()
 }
 //takes nothing, usage has yet to be determined, will vary by character
 virtual Attack chooseAttack() = 0;
+
+//sets attacks equal to moves input and returns nothing
+void Character::setAttacks(vector<Attack> moves)
+{
+    attacks = moves;
+}
+
+//sets year equal to anno
+void Character::setYear(int anno)
+{
+    year = anno;
+}
+
+
+//Adds move input to the list of attacks
+void Character::addAttack(Attack move)
+{
+    attacks.push_back(move);
+}
+
+
+//Returns all the information of a character in string form
+string Character::toString()
+{
+    //Creates the basic output string:
+    //"$NAME has $HEALTH amount of health and has an attack stat of $DAMAGE and a defense stat of $DEFENSE. His attacks are as follows: 
+    string output = name + " has " + to_string(health) + " amount of health " + " and has an attack stat of " + to_string(damage) + " and a defense stat of " + to_string(defense) + " as well as a fame stat of " + to_string(fame) + ". His attacks are as follows: ";
+    //Adds attacks to output
+    output += printAttacks();
+    return output;
+}
+
+//Returns all the attacks with each attack on its own line
+string Character::printAttacks()
+{
+    //sets output to empty string
+    string output = "";
+    //iterates through every attack in attacks
+    for (Attack index : attacks) {
+        //uses the toString functions for attacks and adds that to output
+        output += "\n" + index.toString(damage, defense);
+    }
+    //returns output
+    return output;
+}
+

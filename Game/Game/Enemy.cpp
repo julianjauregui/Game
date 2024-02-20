@@ -14,11 +14,11 @@ static Enemy generateEnemy()
 {
     std::string names[] = { "George Washington", "Thomas Jefferson", "Andrew Jackson", "James Polk", "Abraham Lincoln", "Theodore Roosevelt", "Woodrow Wilson", "FDR", "Harry Truman", "Dwight Eisenhower", "Millard Fillmore"};
     int index = rand() % 11+1;
-    return Enemy(rand() % 100+1, rand() % 100 + 1, rand() % 100 + 1, names[index], rand() % 100 + 1); //not right, needs to reflect the right stats that apply to character.  dummy names are being used at present.  implement the right constructor too
-    //use conditional statements to see which enemy is selected, give each enemy his own attacks
+    Enemy(rand() % 100+1, rand() % 100 + 1, rand() % 100 + 1, names[index], rand() % 100 + 1); //not right, needs to reflect the right stats that apply to character.  dummy names are being used at present.  implement the right constructor too
+    //use conditional statements to see which enemy is selected, give each enemy his own attacks, //you have to use setters to add special attacks
     if (names[index] == "George Washington")
     {
-        Enemy.specialAttacks.push_back(Attack(100, 75, "LEADIN MURICA!!!"));
+        Enemy.attacks.push_back(Attack(100, 75, "LEADIN MURICA!!!"));
         Enemy.specialAttacks.push_back(Attack(75, 25, "marry a rich widow!!!"));
         Enemy.specialAttacks.push_back(Attack(50, 10, "bite with ivory teeth!!!"));
     }

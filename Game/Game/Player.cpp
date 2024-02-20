@@ -23,7 +23,7 @@ static Player generatePlayer()
 {
     std::string names[] = { "Joe Biden", "Donald Trump", "Barack Obama", "George W. Bush", "Bill 'Slick Willy' Clinton", "George H.W. Bush", "Ronald Reagan", "James Carter", "Gerald Ford", "Richard Nixon"};
     int index = rand() % 10 + 1;
-    return Player(rand() % 100 + 1, rand() % 100 + 1, rand() % 100 + 1, names[index], rand() % 100 + 1); //not right, needs to reflect the right stats that apply to character.  dummy names are being used at present.  implement thenright constructor too
+    return Player(rand() % 100 + 1, rand() % 100 + 1, rand() % 100 + 1, names[index], rand() % 100 + 1); //not right, needs to reflect the right stats that apply to character.  dummy names are being used at present.  implement thenright constructor too //you have to use setters to add special attacks
 
     if (names[index] == "Joe Biden")
     {

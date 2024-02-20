@@ -6,6 +6,7 @@
 #include "Attack.h"
 #include <string>
 #include <vector>
+#include "Attack.h"
 using namespace std;
 
 class Character
@@ -24,13 +25,17 @@ protected:
 	//Fame is defined as how famous the character is in the overworld, or how much infuluence he has, or how many people know of him
 	//Every character will have fame, but it primarilly affects the player and the enemies
 	int fame;
+	//Vector of attacks that will be used in battles
+	vector<Attack> attacks{};
+	//Year that the character is in
+	int year;
 
 	//vector from attack allows character to have multiple attack options
 	std::vector<Attack> specialAttacks;
 
 public:
-	//Creates a character, with health, damage, defense, name, and fame stats
-	Character(int life, int attack, int def, string nomen, int influence) {
+	//Creates a character, with health, damage, defense, name, fame, and year stats
+	Character(int life, int attack, int def, string nomen, int influence, int anno) {
 		//sets health equal to the life input
 		health = life;
 		//sets damage equal to the attack input
@@ -41,6 +46,8 @@ public:
 		name = nomen;
 		//sets fame equal to the influence input
 		fame = influence;
+		//sets year equal to anno input
+		year = anno;
 	}
 
 	//Getter for health, implemented in the Character.cpp file
@@ -53,6 +60,10 @@ public:
 	string getName();
 	//Getter of fame, implemented in the Character.cpp file
 	int getFame();
+	//Getter of attacks, implemented in Character.cpp file
+	vector<Attack> getAttacks();
+	//Getter of year, implemented in Character.cpp file
+	int getYear();
 
 	//Setter for the health, implemented in the Character.cpp file
 	void setHealth(int life);
@@ -64,10 +75,21 @@ public:
 	void setName(string nomen);
 	//Setter for the fame, implemented in the Character.spp file
 	void setFame(int influence);
+	//Setter for attacks, implemented in Character.cpp file
+	void setAttacks(vector<Attack> moves);
+	//Setter for year, implemented in Character.cpp file
+	void setYear(int anno);
+
+	//Adds move to attacks vector
+	void addAttack(Attack move);
+	//Outputs the character with all their information
+	string toString();
+	//Outputs all the attacks in a list with each attack on a new line (Primarily used as a helper function for the above)
+	string printAttacks();
+
 	//shows attacks that a characterr can execute, takes nothing
 	void displayAttacks();
 	//takes nothing, usage has yet to be determined, will vary by character
 	virtual Attack chooseAttack();
-
 };
 
