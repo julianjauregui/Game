@@ -87,8 +87,6 @@ public:
 	//Outputs all the attacks in a list with each attack on a new line (Primarily used as a helper function for the above)
 	string printAttacks();
 
-	//shows attacks that a characterr can execute, takes nothing
-	void displayAttacks();
 	//takes nothing, usage has yet to be determined, will vary by character
 	virtual Attack chooseAttack();
 };

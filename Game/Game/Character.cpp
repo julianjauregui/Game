@@ -78,17 +78,6 @@ void Character::setFame(int influence)
     fame = influence;
 }
 
-//shows attacks that a characterr can execute, takes nothing
-void displayAttacks()
-{
-    std::cout << name << "'s special attacks:" << std::endl;
-    for (const auto& attack : specialAttacks) {
-        std::cout << "- " << attack.name << " (Damage: " << attack.damage << ")" << std::endl;
-    }
-}
-//takes nothing, usage has yet to be determined, will vary by character
-virtual Attack chooseAttack() = 0;
-
 //sets attacks equal to moves input and returns nothing
 void Character::setAttacks(vector<Attack> moves)
 {
@@ -133,4 +122,10 @@ string Character::printAttacks()
     //returns output
     return output;
 }
+
+Attack Character::chooseAttack()
+{
+    return Attack(0,0,"Not a real attack");
+}
+
 

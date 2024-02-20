@@ -114,8 +114,7 @@ void returnToOverworld() {
 
 //This enterBattle function is still in production, so it says so
 void enterBattle() {
-	
-	Player.generatePlayer();
+	/*Player.generatePlayer();
 	Enemy.generateEnemy();
 
 	// Create player and enemy, add attacks
@@ -149,6 +148,9 @@ void enterBattle() {
 	}
 
 	return 0;
+	*/
+	//Enter battle is not yet ready
+	cout << "Enter battle is currently faulty, and is under construction still. Sorry";
 }
 
 //This manage inventory function is still in production, so it says so
