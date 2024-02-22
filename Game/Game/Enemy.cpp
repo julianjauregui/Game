@@ -12,27 +12,35 @@ Attack Enemy::chooseAttack(){
 
 void Enemy::makeBosses()
 {
+    //George washington will be the first ruler in the game, so he will have the weakest stats
+    //Health = 100; attack = 5; deffense = 5; name = "George Washington"; fame = 5; year = 1795
     Enemy georgeWashington(100, 5, 5, "George Washington", 5, 1795);
-    georgeWashington.addAttack(Attack(100, 75, "LEADIN MURICA!!!"));
-    georgeWashington.addAttack(Attack(75, 25, "marry a rich widow!!!"));
-    georgeWashington.addAttack(Attack(50, 10, "bite with ivory teeth!!!"));
+    georgeWashington.addAttack(Attack(10.0, 7.5, "LEADIN MURICA!!!"));
+    georgeWashington.addAttack(Attack(7.5, 2.5, "marry a rich widow!!!"));
+    georgeWashington.addAttack(Attack(5.0, 1.0, "bite with ivory teeth!!!"));
     
-    Enemy thomasJefferson(100, 10, 10, "Thomas Jefferson", 10, 1805);
-    thomasJefferson.addAttack(Attack(100, 75, "Writing the declaration of independence!!"));
-    thomasJefferson.addAttack(Attack(75, 25, "treating my slaves better than most!!!"));
-    thomasJefferson.addAttack(Attack(50, 10, "don't fight..just write!! then fight"));
+    //Thomas Jefferson will be the second ruler in the game, so he will have the second weakest stats
+    //Health = 200; attack = 10; deffense = 10; name = "Thomas Jefferson"; fame = 10; year = 1805
+    Enemy thomasJefferson(200, 10, 10, "Thomas Jefferson", 10, 1805);
+    thomasJefferson.addAttack(Attack(10.0, 7.5, "Writing the declaration of independence!!"));
+    thomasJefferson.addAttack(Attack(7.5, 2.5, "treating my slaves better than most!!!"));
+    thomasJefferson.addAttack(Attack(5.0, 1.0, "don't fight..just write!! then fight"));
 
-    Enemy andrewJackson(100, 15, 15, "Andrew Jackson", 15, 1835);
-    andrewJackson.addAttack(Attack(100, 75, "Rage!!! smashed with a liquor bottle"));
-    andrewJackson.addAttack(Attack(75, 25, "racism!!! get movin ya red skins"));
-    andrewJackson.addAttack(Attack(50, 10, "unexpected party in the white house!!"));
+    //Andrew Jackson will be the third ruler in the game, so he will have the third weakest stats
+    //Health = 300; attack = 15; deffense = 15; name = "Andrew Jackson"; fame = 15; year = 1835
+    Enemy andrewJackson(300, 15, 15, "Andrew Jackson", 15, 1835);
+    andrewJackson.addAttack(Attack(10.0, 7.5, "Rage!!! smashed with a liquor bottle"));
+    andrewJackson.addAttack(Attack(7.5, 2.5, "racism!!! get movin ya red skins"));
+    andrewJackson.addAttack(Attack(5.0, 1.0, "unexpected party in the white house!!"));
     
+    //James Polk will be the fourth ruler in the game, so he will have the fourth weakest stats
+    //Health = 400; attack = 10; deffense = 10; name = "Thomas Jefferson"; fame = 10; year = 1805
+    Enemy jamesPolk(400, 20, 20, "James Polk", 20, 1845);
+    jamesPolk.addAttack(Attack(10.0, 7.5, "lethal cross examination!!!"));
+    jamesPolk.addAttack(Attack(7.5, 2.5, "expanding the country!!!"));
+    jamesPolk.addAttack(Attack(5.0, 1.0, "sneaky influence"));
 
-    Enemy jamesPolk(100, 20, 20, "James Polk", 20, 1845);
-    jamesPolk.addAttack(Attack(100, 75, "lethal cross examination!!!"));
-    jamesPolk.addAttack(Attack(75, 25, "expanding the country!!!"));
-    jamesPolk.addAttack(Attack(50, 10, "sneaky influence"));
-
+    //WILL ADD COMMENTS AND CHANGE THE DEFENSE STATS ON THIS
     Enemy abrahamLincoln(100, 25, 25, "Abraham Lincoln", 25, 1860);
     abrahamLincoln.addAttack(Attack(100, 75, "Freed your slaves!!!"));
     abrahamLincoln.addAttack(Attack(75, 25, "delivered a lethal adress!!"));
@@ -72,8 +80,8 @@ void Enemy::makeBosses()
 //generates random enemy.  takes nothing in, creates an enemy with randiomly selected name, randomizes other character stats
 Enemy Enemy::generateEnemy() 
 {
-    std::string names[] = { "George Washington", "Thomas Jefferson", "Andrew Jackson", "James Polk", "Abraham Lincoln", "Theodore Roosevelt", "Woodrow Wilson", "FDR", "Harry Truman", "Dwight Eisenhower", "Millard Fillmore"};
-    int index = rand() % 11+1;
+    std::string names[] = { "FBI Agent", "CIA Spy", "Vice President", "Opposing Ruler"};
+    int index = rand() % 4;
     Enemy newEn(rand() % 100+1, rand() % 100 + 1, rand() % 100 + 1, names[index], rand() % 100 + 1, rand() % 100 + 1); //not right, needs to reflect the right stats that apply to character.  dummy names are being used at present.  implement the right constructor too
     //use conditional statements to see which enemy is selected, give each enemy his own attacks, //you have to use setters to add special attacks
     if (names[index] == "George Washington")
