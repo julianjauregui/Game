@@ -122,7 +122,7 @@ string Character::printAttacks()
     //returns output
     return output;
 }
-
+//Implemented separately for the enemy and character classes
 Attack Character::chooseAttack()
 {
     return Attack(0,0,"Not a real attack");

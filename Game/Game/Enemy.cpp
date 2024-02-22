@@ -10,6 +10,65 @@ Attack Enemy::chooseAttack(){
     return specialAttacks[choice];
 }
 
+void Enemy::makeBosses()
+{
+    Enemy georgeWashington(100, 5, 5, "George Washington", 5, 1795);
+    georgeWashington.addAttack(Attack(100, 75, "LEADIN MURICA!!!"));
+    georgeWashington.addAttack(Attack(75, 25, "marry a rich widow!!!"));
+    georgeWashington.addAttack(Attack(50, 10, "bite with ivory teeth!!!"));
+    
+    Enemy thomasJefferson(100, 10, 10, "Thomas Jefferson", 10, 1805);
+    thomasJefferson.addAttack(Attack(100, 75, "Writing the declaration of independence!!"));
+    thomasJefferson.addAttack(Attack(75, 25, "treating my slaves better than most!!!"));
+    thomasJefferson.addAttack(Attack(50, 10, "don't fight..just write!! then fight"));
+
+    Enemy andrewJackson(100, 15, 15, "Andrew Jackson", 15, 1835);
+    andrewJackson.addAttack(Attack(100, 75, "Rage!!! smashed with a liquor bottle"));
+    andrewJackson.addAttack(Attack(75, 25, "racism!!! get movin ya red skins"));
+    andrewJackson.addAttack(Attack(50, 10, "unexpected party in the white house!!"));
+    
+
+    Enemy jamesPolk(100, 20, 20, "James Polk", 20, 1845);
+    jamesPolk.addAttack(Attack(100, 75, "lethal cross examination!!!"));
+    jamesPolk.addAttack(Attack(75, 25, "expanding the country!!!"));
+    jamesPolk.addAttack(Attack(50, 10, "sneaky influence"));
+
+    Enemy abrahamLincoln(100, 25, 25, "Abraham Lincoln", 25, 1860);
+    abrahamLincoln.addAttack(Attack(100, 75, "Freed your slaves!!!"));
+    abrahamLincoln.addAttack(Attack(75, 25, "delivered a lethal adress!!"));
+    abrahamLincoln.addAttack(Attack(50, 10, "taller than you!!!"));
+
+    Enemy theodoreRoosevelt(100, 30, 30, "Theodore Roosevelt", 30, 1905);
+    theodoreRoosevelt.addAttack(Attack(100, 75, "HIT WITH A BIG BIG BIG STICK"));
+    theodoreRoosevelt.addAttack(Attack(75, 25, "speaking softly"));
+    theodoreRoosevelt.addAttack(Attack(50, 10, "Back with a new party!!!"));
+
+    Enemy woodrowWilson(100, 35, 35, "Woodrow Wilson", 35, 1915);
+    woodrowWilson.addAttack(Attack(100, 75, "I will reluctantly throw you into WWI and blame you for the war."));
+    woodrowWilson.addAttack(Attack(75, 25, "BLATANT SEXISM"));
+    woodrowWilson.addAttack(Attack(50, 10, "HATE FOR CATHOLICS"));
+
+    Enemy FDR(100, 40, 40, "FDR", 40, 1940);
+    FDR.addAttack(Attack(100, 75, "I will be your president.....forever!!!!!!!!"));
+    FDR.addAttack(Attack(75, 25, "You literally can't get rid of me......"));
+    FDR.addAttack(Attack(50, 10, "I'll throw you into WWII and blame the whole thing on you!"));
+
+    Enemy harryTruman(100, 45, 45, "Harry Truman", 45, 1947);
+    harryTruman.addAttack(Attack(100, 75, "NUKED"));
+    harryTruman.addAttack(Attack(75, 25, "I look nerdier than you!!!"));
+    harryTruman.addAttack(Attack(50, 10, "I might scare you with red or freeze you with a cold war.....heck i might nuke you"));
+
+    Enemy dwightEisenhower(100, 50, 50, "Dwight Eisenhower", 50, 1955);
+    dwightEisenhower.addAttack(Attack(100, 75, "I replace you with a highway system!!"));
+    dwightEisenhower.addAttack(Attack(75, 25, "My name is literally DWIGHT, I am part of the greatest generation, I fought in WWII, I made the highway system as you know it, I could go on..."));
+    dwightEisenhower.addAttack(Attack(50, 10, "You deal with the Korean War!!"));
+
+    Enemy millardFilmore(100, 60, 60, "Millard Filmore", 60, 1850);
+    millardFilmore.addAttack(Attack(100, 50, "the worst campaign slogan ever : No fame, no gain, that's the Millard Fillmore way"));
+    millardFilmore.addAttack(Attack(75, 25, "mid looks"));
+    millardFilmore.addAttack(Attack(50, 10, "the worst name job ever"));
+}
+
 //generates random enemy.  takes nothing in, creates an enemy with randiomly selected name, randomizes other character stats
 Enemy Enemy::generateEnemy() 
 {

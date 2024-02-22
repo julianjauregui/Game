@@ -11,10 +11,15 @@ protected:
 	double defenseMultiplier;
 	//Has string for the name of the attack
 	string name;
+
 public:
+	//declares an attack with all 3 variables, attackMultiplier, defenseMultiplier, and name
 	Attack(double damage, double defense, string nomen) {
+		//sets damageMultiplier to damage input
 		damageMultiplier = damage;
+		//sets defenseMultiplier to defense
 		defenseMultiplier = defense;
+		//sets name to nomen
 		name = nomen;
 	}
 
