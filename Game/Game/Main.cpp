@@ -15,6 +15,9 @@ using namespace std;
 //will contain all of the enemy presidents
 vector <Enemy> enemyPresidents;
 
+//this is the player
+Player player(0,0,0,"",0,0);
+
 //This function is the startup function and is meant to be called at the beginning of the game, so as to start up the game 
 void startup();
 
@@ -38,6 +41,8 @@ void quitGame();
 
 
 int main() {
+	//runs the startup() function at the begining of the game
+	startup();
 	
 	//Selection is the number of choice that the user does, from 1 to 6 being accounted for; it set equal to zero before any choice has been made
 	int selection = 0;
@@ -117,6 +122,8 @@ void startup()
 {
 	//generates all of the presidents from the enemies and sets enemyPresidents equal to it
 	enemyPresidents = Enemy::makeBosses();
+	//generates the player with his desired president choice
+	player = Player::generatePlayer();
 }
 
 //This overworld function is still in production, so it says so
