@@ -12,6 +12,11 @@
 
 using namespace std;
 
+//will contain all of the enemy presidents
+vector <Enemy> enemyPresidents;
+
+//This function is the startup function and is meant to be called at the beginning of the game, so as to start up the game 
+void startup();
 
 //This function returns to the game/map from the menu
 void returnToOverworld();
@@ -105,6 +110,13 @@ int main() {
 
 	}
 	return 0;
+}
+
+//Any startup function will be called here
+void startup()
+{
+	//generates all of the presidents from the enemies and sets enemyPresidents equal to it
+	enemyPresidents = Enemy::makeBosses();
 }
 
 //This overworld function is still in production, so it says so

@@ -10,6 +10,6 @@ public:
 
     static Enemy generateEnemy(); //generates random enemy.  takes nothing in, creates an enemy with randiomly selected name, randomizes other character stats
     Attack chooseAttack() override; //function that overides virtual function in character
-    static void makeBosses();//called at the beggining ot the game to generate all of the presidents who are the bad guys
+    static vector<Enemy> makeBosses();//called at the beggining ot the game to generate all of the presidents who are the bad guys
 };
 

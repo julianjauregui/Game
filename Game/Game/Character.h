@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 #include "Attack.h"
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 
 class Character
