@@ -49,6 +49,7 @@ int main() {
 
 	//repeats the menu until the player chooses 6, which makes the player leave the game
 	while (selection != 6) {
+		cout << "\n\nhello world\n\n";
 		//Prints out the main menu choices, with each option being its own line
 		cout << "Welcome to the main Menu. Pick what you would like to do: " << endl;
 		cout << "1. Return to Game." << endl;
