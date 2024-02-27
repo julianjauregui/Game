@@ -133,41 +133,41 @@ void returnToOverworld() {
 
 //This enterBattle function is still in production, so it says so
 void enterBattle() {
-	/*Player.generatePlayer();
-	Enemy.generateEnemy();
+	//Player.generatePlayer();
+	//Enemy.generateEnemy();
 
 	// Create player and enemy, add attacks
-	Player Player(100,100,100,"Dwight Eisenhower", 75);
-	Enemy Enemy(100,100,100,"George Washington", 99);
+	//Player Player(100,100,100,"Dwight Eisenhower", 75);
+	//Enemy Enemy(100,100,100,"George Washington", 99);
 
-	std::cout << "A wild " << enemy.name << " appeared!" << std::endl;
+	//std::cout << "A wild " << enemy.name << " appeared!" << std::endl;
 
-	while (Player.health > 0 && Enemy.health > 0) {
+	//while (Player.health > 0 && Enemy.health > 0) {
 		// Player's turn
-		Attack playerAttack = Player.chooseAttack();
-		std::cout << Player.name << " used " << playerAttack.name << "!" << std::endl;
-		Enemy.health -= playerAttack.damage;
-		std::cout << Enemy.name << " health: " << Enemy.health << std::endl;
+		//Attack playerAttack = Player.chooseAttack();
+		//std::cout << Player.name << " used " << playerAttack.name << "!" << std::endl;
+		//Enemy.health -= playerAttack.damage;
+		//std::cout << Enemy.name << " health: " << Enemy.health << std::endl;
 
-		if (Enemy.health <= 0) {
-			std::cout << "Congratulations! You defeated the " << Enemy.name << "!" << std::endl;
-			break;
-		}
+		//if (Enemy.health <= 0) {
+			//std::cout << "Congratulations! You defeated the " << Enemy.name << "!" << std::endl;
+			//break;
+		//}
 
 		// Enemy's turn
-		Attack enemyAttack = Enemy.chooseAttack();
-		std::cout << Enemy.name << " used " << enemyAttack.name << "!" << std::endl;
-		player.health -= enemyAttack.damage;
-		std::cout << Player.name << " health: " << Player.health << std::endl;
+		//Attack enemyAttack = Enemy.chooseAttack();
+		//std::cout << Enemy.name << " used " << enemyAttack.name << "!" << std::endl;
+		//player.health -= enemyAttack.damage;
+		//std::cout << Player.name << " health: " << Player.health << std::endl;
 
-		if (Player.health <= 0) {
-			std::cout << "Game over! " << Enemy.name << " defeated you." << std::endl;
-			break;
-		}
-	}
+		//if (Player.health <= 0) {
+			//std::cout << "Game over! " << Enemy.name << " defeated you." << std::endl;
+			//break;
+		//}
+	//}
 
-	return 0;
-	*/
+	//return 0;
+	// 
 	//Enter battle is not yet ready
 	cout << "Enter battle is currently faulty, and is under construction still. Sorry";
 }

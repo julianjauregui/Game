@@ -3,18 +3,25 @@
 //players functions will be here
 //function that overides virtual function in character
 Attack Player::chooseAttack(){
+    //prints attacks before letting player pick which one he wants to 
     printAttacks();
 
+    //creates choice variable that will have index of attack later on
     int choice;
-    std::cout << "Choose an attack (1-" << specialAttacks.size() << "): ";
+    //tells the user how to pick his attack
+    std::cout << "Choose an attack (1-" << attacks.size() << "): ";
+    //Takes the choice input from the user
     std::cin >> choice;
 
-    if (choice >= 1 && choice <= specialAttacks.size()) {
-        return specialAttacks[choice - 1];
+    //If choice is valid, returns the attack indexed by choice
+    if (choice >= 1 && choice <= attacks.size()) {
+        return attacks[choice - 1];
     }
+
+    //if choice isn't valid, it runs the function again
     else {
-        // Default to basic attack
-        std::cout << "Invalid choice. Using basic attack." << std::endl;
+        //Tells the user that the function will be re-run
+        std::cout << "Invalid choice. Choose again." << std::endl;
         return chooseAttack();
     }
 }

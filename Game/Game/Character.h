@@ -32,9 +32,6 @@ protected:
 	//Year that the character is in
 	int year;
 
-	//vector from attack allows character to have multiple attack options
-	std::vector<Attack> specialAttacks;
-
 public:
 	//Creates a character, with health, damage, defense, name, fame, and year stats
 	Character(int life, int attack, int def, string nomen, int influence, int anno) {

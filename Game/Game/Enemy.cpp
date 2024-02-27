@@ -5,10 +5,12 @@
 //COULD BE A POTENTIAL BUG HERE IF OVERRIDE DOES NOT WORK PROPERLY
 //function that overides virtual function in character. enemy randomly chooses his own attack!!!!!
 Attack Enemy::chooseAttack(){
-    // Enemy chooses a random attack
+    // Generates a random seed
     srand(time(NULL));
-    int choice = rand() % specialAttacks.size();
-    return specialAttacks[choice];
+    //Sets choice to a random index that is in the attack size
+    int choice = rand() % attacks.size();
+    //Returns that attack
+    return attacks[choice];
 }
 
 vector<Enemy> Enemy::makeBosses()
