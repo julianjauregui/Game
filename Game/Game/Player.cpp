@@ -54,6 +54,7 @@ Player Player::generatePlayer()
     index--;
 
     //generates the player object with the amateur stats
+
     Player player(100, 5, 5, names[index], 0, 1790); 
 
     //initializes the characters attacks if he chooses to be joe biden
