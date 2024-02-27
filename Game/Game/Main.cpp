@@ -51,14 +51,13 @@ int main() {
 	while (selection != 6) {
 		
 		//Prints out the main menu choices, with each option being its own line
-		cout << "\n\nhello world\n\n";
 		cout << "Welcome to the main Menu. Pick what you would like to do: " << endl;
 		cout << "1. Return to Game." << endl;
 		cout << "2. Enter Battle." << endl;
 		cout << "3. Manage Inventory." << endl;
 		cout << "4. Enter shop." << endl;
 		cout << "5.Talk to Someone." << endl;
-		cout << "6. Quit Game." << endl;
+		cout << "6. Quit Game." << endl;`
 		cout << "Pick your selection: ";
 		//Enters the selection from the user of what function they want to call
 		cin >> selection;
