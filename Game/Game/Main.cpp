@@ -57,7 +57,7 @@ int main() {
 		cout << "3. Manage Inventory." << endl;
 		cout << "4. Enter shop." << endl;
 		cout << "5.Talk to Someone." << endl;
-		cout << "6. Quit Game." << endl;`
+		cout << "6. Quit Game." << endl;
 		cout << "Pick your selection: ";
 		//Enters the selection from the user of what function they want to call
 		cin >> selection;
