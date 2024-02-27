@@ -35,7 +35,7 @@ Player Player::generatePlayer()
     int index=13;
 
     //only stops when index is less than the size of the names, so as to avoid segfaults
-    while (index > names->size() - 1) {
+    while (index > names->size()) {
         //Outputs the command giving the user the prompt to pick a character
         cout << "Please choose the number next to the character that you wish to select:" << endl;
         //iterates through entire names array printing each president next to a corresponding number
@@ -46,7 +46,7 @@ Player Player::generatePlayer()
         cin >> index;
 
         //if the number is too large, tells the user and repeats the selection process, so as to avoid segfaults
-        if (index > names->size() - 1) {
+        if (index > names->size()) {
             cout << "The number was too large." << endl;
         }
     }
