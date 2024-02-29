@@ -114,10 +114,14 @@ string Character::printAttacks()
 {
     //sets output to empty string
     string output = "";
+    //uses counter to print out the number next to the attack
+    int counter = 1;
     //iterates through every attack in attacks
     for (Attack index : attacks) {
         //uses the toString functions for attacks and adds that to output
-        output += "\n" + index.toString(damage, defense);
+        output += '\n' + to_string(counter) + ". " + index.toString(damage, defense);
+        //increments the counter by one
+        counter++;
     }
     //returns output
     return output;

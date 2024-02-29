@@ -4,7 +4,7 @@
 //function that overides virtual function in character
 Attack Player::chooseAttack(){
     //prints attacks before letting player pick which one he wants to 
-    printAttacks();
+    cout << "The attacks are as follows:\n" + printAttacks();
 
     //creates choice variable that will have index of attack later on
     int choice;

@@ -134,43 +134,62 @@ void returnToOverworld() {
 
 //This enterBattle function is still in production, so it says so
 void enterBattle() {
-	//Player.generatePlayer();
-	//Enemy.generateEnemy();
+	//initializes the random enemy that the user will be fighting
+	Enemy enemy = Enemy::generateEnemy();
+	cout << "A wild " << enemy.getName() << " appeared!" << endl;
+	//waits for user input before clearing the screen
+	system("pause");
+	system("cls");
 
-	// Create player and enemy, add attacks
-	//Player Player(100,100,100,"Dwight Eisenhower", 75);
-	//Enemy Enemy(100,100,100,"George Washington", 99);
+	//if none of the players have 0 health left
+	while (player.getHealth() > 0 && enemy.getHealth() > 0) {
+		//generates the enemy attack first for no confusion on the defense multiplier stat
+		Attack enemyAttack = enemy.chooseAttack();
 
-	//std::cout << "A wild " << enemy.name << " appeared!" << std::endl;
-
-	//while (Player.health > 0 && Enemy.health > 0) {
 		// Player's turn
-		//Attack playerAttack = Player.chooseAttack();
-		//std::cout << Player.name << " used " << playerAttack.name << "!" << std::endl;
-		//Enemy.health -= playerAttack.damage;
-		//std::cout << Enemy.name << " health: " << Enemy.health << std::endl;
+		//player chooses his attack
+		Attack playerAttack = player.chooseAttack();
+		//prints out what attack the player chose
+		cout << player.getName() << " used " << playerAttack.getName() << "!" << endl;
 
-		//if (Enemy.health <= 0) {
-			//std::cout << "Congratulations! You defeated the " << Enemy.name << "!" << std::endl;
-			//break;
-		//}
+		//sets enemy health equal to their current health minus the damage multiplier on the player times their damage stat minus the defense stat of the enemy times the defense multiplier of their attack
+		enemy.setHealth(enemy.getHealth() - (playerAttack.getDamageMultiplier() * player.getDamage() - enemy.getDefense() * enemyAttack.getDefenseMultiplier()));
+		//displays the current health of the enemy
+		cout << enemy.getName() << " health: " << enemy.getHealth() << endl;
+		//waits for user input before clearing screen
+		system("pause");
+		system("cls");
+
+		//checks if enemy is still alive
+		if (enemy.getHealth() <= 0) {
+			//tells the user that the enemy has been defeated
+			cout << "Congratulations! You defeated the " << enemy.getName() << "!" << endl;
+			//breaks out of the attack sequence while loop
+			break;
+		}
 
 		// Enemy's turn
-		//Attack enemyAttack = Enemy.chooseAttack();
-		//std::cout << Enemy.name << " used " << enemyAttack.name << "!" << std::endl;
-		//player.health -= enemyAttack.damage;
-		//std::cout << Player.name << " health: " << Player.health << std::endl;
+		//attack has been generated before, so it only prints out the attack name
+		cout << enemy.getName() << " used " << enemyAttack.getName() << "!" << endl;
+		//sets player health equal to their current health minus the damage multiplier on the enemy times their damage stat minus the defense stat of the player times the defense multiplier of their attack
+		player.setHealth(player.getHealth() - (enemyAttack.getDamageMultiplier() * enemy.getDamage() - player.getDefense() * playerAttack.getDefenseMultiplier()));
+		//prints out the current player health
+		cout << player.getName() << " health: " << player.getHealth() << endl;
+		//waits for user input before clearing screen
+		system("pause");
+		system("cls");
 
-		//if (Player.health <= 0) {
-			//std::cout << "Game over! " << Enemy.name << " defeated you." << std::endl;
-			//break;
-		//}
-	//}
-
-	//return 0;
-	// 
-	//Enter battle is not yet ready
-	cout << "Enter battle is currently faulty, and is under construction still. Sorry";
+		//if player dies, tells the player that he died
+		if (player.getHealth() <= 0) {
+			cout << "Game over! " << enemy.getName() << " defeated you." << endl;
+			//breaks out of the while loop attack sequence
+			break;
+		}
+	}
+	//tells the user that the battle is over
+	cout << "The Battle has been fought. Go in peace.";
+	system("pause");
+	system("cls");
 }
 
 //This manage inventory function is still in production, so it says so
