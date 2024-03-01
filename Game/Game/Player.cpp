@@ -9,7 +9,7 @@ Attack Player::chooseAttack(){
     //creates choice variable that will have index of attack later on
     int choice;
     //tells the user how to pick his attack
-    std::cout << "Choose an attack (1-" << attacks.size() << "): ";
+    std::cout << "\nChoose an attack (1-" << attacks.size() << "): ";
     //Takes the choice input from the user
     std::cin >> choice;
 
