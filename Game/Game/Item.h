@@ -18,12 +18,14 @@ protected:
 
 	//each item has a name
 	string name;
+	//each item has a type, whether it is a weapon, armor, potion, or other
+	string type;
 	//each item has a year that it was made, (might be implemented later on in the game)
 	int year;
 
 public:
-	//initializes item with health, damage, defense, fame, name, and year stats; sets pointers to null
-	Item(double health, double damage, double defense, double fame, string nomen, int anno) {
+	//initializes item with health, damage, defense, fame, name, year, and kind stats; sets pointers to null
+	Item(double health, double damage, double defense, double fame, string nomen, int anno, string kind) {
 		//healthEffect will be equal to the health input
 		healthEffect = health;
 		//damageEffect will be equal to the damage input
@@ -36,6 +38,8 @@ public:
 		name = nomen;
 		//year will be equal to the anno input
 		year = anno;
+		//sets type equal to the kind input
+		type = kind;
 		//nextItem pointer will be equal to nullptr
 		nextItem = nullptr;
 		//prevItem pointer will be equal to nullptr
@@ -58,6 +62,8 @@ public:
 	string getName();
 	//returns year
 	int getYear();
+	//returns type
+	string getType();
 
 	//sets nextItem pointer equal to next
 	void setNextItem(Item* next);
@@ -75,6 +81,8 @@ public:
 	void setName(string nomen);
 	//sets year equal to anno
 	void setYear(int anno);
+	//sets type equal to kind
+	void setType(string kind);
 
 	//returns a string with all of the item information
 	string toString();
