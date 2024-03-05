@@ -6,6 +6,7 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include "Inventory.h"
 
 //THIS IS THE LIBRARY TO INCLUDE IN ORDER TO WIPE SCREEN (USE system("cls"); IN ORDER TO CLEAR THE SCREEN)
 #include <stdlib.h>
@@ -17,6 +18,9 @@ vector <Enemy> enemyPresidents;
 
 //this is the player
 Player player(0,0,0,"",0,0);
+
+//this is the player's inventory
+Inventory inventory;
 
 //This function is the startup function and is meant to be called at the beginning of the game, so as to start up the game 
 void startup();
@@ -132,7 +136,7 @@ void returnToOverworld() {
 	cout << "Sorry, it appears that the overworld is still in development." << endl;
 }
 
-//This enterBattle function is still in production, so it says so
+//This enterBattle function, the arena whwere battles are fought
 void enterBattle() {
 	//initializes the random enemy that the user will be fighting
 	Enemy enemy = Enemy::generateEnemy();
@@ -192,9 +196,14 @@ void enterBattle() {
 	system("cls");
 }
 
-//This manage inventory function is still in production, so it says so
+//This is the manageInventory fuinction, the place where the hoarders get to see what they hoard
 void manageInventory() {
-	cout << "Sorry, it appears that your inventory has not yet been developed." << endl;
+	//outputs the user's inventory
+	cout << "Welcome to your inventory. Please see what items you have: " << endl;
+	cout << inventory.to_string()<<endl;
+	//pauses and waits for input before continuing to main menu
+	system("pause");
+	system("cls");
 }
 
 //This shop function is still in production, so it says so

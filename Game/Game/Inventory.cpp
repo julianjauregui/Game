@@ -254,6 +254,10 @@ Item Inventory::popFront() {
 //inputs nothing and outputs a string
 string Inventory::to_string()
 {
+	//if the list is empty, it says so
+	if (size() == 0) {
+		return "The inventory is currently empty, go buy some things to make it bigger.";
+	}
 	//makes a temporary iterator item that is starts at first
 	Item* iterator = first;
 	//makes a string called list that is empty but will have all the info later on
