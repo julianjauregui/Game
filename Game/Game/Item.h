@@ -22,10 +22,12 @@ protected:
 	string type;
 	//each item has a year that it was made, (might be implemented later on in the game)
 	int year;
+	//each item has a cost
+	double cost;
 
 public:
-	//initializes item with health, damage, defense, fame, name, year, and kind stats; sets pointers to null
-	Item(double health, double damage, double defense, double fame, string nomen, int anno, string kind) {
+	//initializes item with health, damage, defense, fame, name, year, kind, and price stats; sets pointers to null
+	Item(double health, double damage, double defense, double fame, string nomen, int anno, string kind, double price) {
 		//healthEffect will be equal to the health input
 		healthEffect = health;
 		//damageEffect will be equal to the damage input
@@ -40,6 +42,8 @@ public:
 		year = anno;
 		//sets type equal to the kind input
 		type = kind;
+		//sets cost equal to the price input
+		cost = price;
 		//nextItem pointer will be equal to nullptr
 		nextItem = nullptr;
 		//prevItem pointer will be equal to nullptr
@@ -64,6 +68,8 @@ public:
 	int getYear();
 	//returns type
 	string getType();
+	//returns cost
+	double getCost();
 
 	//sets nextItem pointer equal to next
 	void setNextItem(Item* next);
@@ -83,6 +89,8 @@ public:
 	void setYear(int anno);
 	//sets type equal to kind
 	void setType(string kind);
+	//sets cost equal to price
+	void setCost(double price);
 
 	//returns a string with all of the item information
 	string toString();

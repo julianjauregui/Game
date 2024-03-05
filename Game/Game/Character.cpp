@@ -31,7 +31,7 @@ string Character::getName()
 }
 
 //Getter for fame, returns fame
-int Character::getFame()
+double Character::getFame()
 {
     return fame;
 }
@@ -73,7 +73,7 @@ void Character::setName(string nomen)
 }
 
 //Setter for damage, sets fame equal to influence
-void Character::setFame(int influence)
+void Character::setFame(double influence)
 {
     fame = influence;
 }

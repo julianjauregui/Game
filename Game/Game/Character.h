@@ -26,7 +26,7 @@ protected:
 	//This value saves the current fame level of the character
 	//Fame is defined as how famous the character is in the overworld, or how much infuluence he has, or how many people know of him
 	//Every character will have fame, but it primarilly affects the player and the enemies
-	int fame;
+	double fame;
 	//Vector of attacks that will be used in battles
 	vector<Attack> attacks{};
 	//Year that the character is in
@@ -34,7 +34,7 @@ protected:
 
 public:
 	//Creates a character, with health, damage, defense, name, fame, and year stats
-	Character(int life, int attack, int def, string nomen, int influence, int anno) {
+	Character(int life, int attack, int def, string nomen, double influence, int anno) {
 		//sets health equal to the life input
 		health = life;
 		//sets damage equal to the attack input
@@ -58,7 +58,7 @@ public:
 	//Getter for name, implemented in the Character.cpp file
 	string getName();
 	//Getter of fame, implemented in the Character.cpp file
-	int getFame();
+	double getFame();
 	//Getter of attacks, implemented in Character.cpp file
 	vector<Attack> getAttacks();
 	//Getter of year, implemented in Character.cpp file
@@ -73,7 +73,7 @@ public:
 	//Setter for the name, implemented in the Character.spp file
 	void setName(string nomen);
 	//Setter for the fame, implemented in the Character.spp file
-	void setFame(int influence);
+	void setFame(double influence);
 	//Setter for attacks, implemented in Character.cpp file
 	void setAttacks(vector<Attack> moves);
 	//Setter for year, implemented in Character.cpp file

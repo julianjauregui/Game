@@ -54,6 +54,12 @@ string Item::getType()
 	return type;
 }
 
+//returns cost
+double Item::getCost()
+{
+	return cost;
+}
+
 //takes input of next and returns nothing
 void Item::setNextItem(Item* next)
 {
@@ -115,6 +121,13 @@ void Item::setType(string kind)
 {
 	//sets type equal to kind
 	type = kind;
+}
+
+//takes input of price and returns nothing
+void Item::setCost(double price)
+{
+	//sets cost equal to price
+	cost = price;
 }
 
 //inputs nothing and returns the item information as a string
