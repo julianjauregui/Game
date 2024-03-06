@@ -2,6 +2,7 @@
 #pragma once
 
 //An item is equivalent to a node in a list
+#include "Player.h"
 #include "Item.h"
 #include <string>
 #include <iostream>
