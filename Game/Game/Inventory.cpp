@@ -15,7 +15,7 @@ Item Inventory::getFirst() {
 		return *first;
 	}
 	//if list is empty, it returns an empty Item
-	Item output(0, 0, 0, 0, "Nothing", 0, "Nothing");
+	Item output(0, 0, 0, 0, "Nothing", 0, "Nothing", 0);
 	return output;
 }
 
@@ -39,7 +39,7 @@ Item Inventory::getLast() {
 		return *last;
 	}
 	//if list is empty, it returns an empty item
-	Item output(0, 0, 0, 0, "Nothing", 0, "Nothing");
+	Item output(0, 0, 0, 0, "Nothing", 0, "Nothing", 0);
 	return output;
 }
 
@@ -51,7 +51,7 @@ Item Inventory::getCurrent() {
 		return *index;
 	}
 	//if list is empty, it returns an empty Item
-	Item output(0, 0, 0, 0, "Nothing", 0, "Nothing");
+	Item output(0, 0, 0, 0, "Nothing", 0, "Nothing", 0);
 	return output;
 }
 
@@ -85,7 +85,7 @@ Item Inventory::popBack() {
 	//if list is empty
 	if (last == nullptr) {
 		//returns a default Item
-		Item output(0, 0, 0, 0, "Nothing", 0, "Nothing");
+		Item output(0, 0, 0, 0, "Nothing", 0, "Nothing", 0);
 		return output;
 	}
 
@@ -226,7 +226,7 @@ Item Inventory::deleteCurrent()
 	}
 
 	//if the list is empty, it returns a default item
-	Item output(0, 0, 0, 0, "Nothing", 0, "Nothing");
+	Item output(0, 0, 0, 0, "Nothing", 0, "Nothing", 0);
 	return output;
 }
 
@@ -247,7 +247,7 @@ Item Inventory::popFront() {
 	}
 
 	//if the list is empty it returns a default item
-	Item output(0, 0, 0, 0, "Nothing", 0, "Nothing");
+	Item output(0, 0, 0, 0, "Nothing", 0, "Nothing", 0);
 	return output;
 }
 
