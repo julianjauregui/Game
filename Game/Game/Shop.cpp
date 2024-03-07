@@ -84,7 +84,7 @@ double Shop::sell(Inventory& possessions)
         cin >> choice;
     }
     possessions.setCurrent(choice);
-    int cost = possessions.getCurrent().getCost();
+    int cost = int(possessions.getCurrent().getCost());
     deleteCurrent();
     return cost;
 }

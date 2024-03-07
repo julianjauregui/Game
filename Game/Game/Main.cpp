@@ -17,7 +17,7 @@ using namespace std;
 vector <Enemy> enemyPresidents;
 
 //this is the player
-Player player(0,0,0,"",0,0);
+Player player(0,0,0,"",0.0,0);
 
 //this is the player's inventory
 Inventory inventory;
@@ -157,7 +157,7 @@ void enterBattle() {
 		cout << player.getName() << " used " << playerAttack.getName() << "!" << endl;
 
 		//sets enemy health equal to their current health minus the damage multiplier on the player times their damage stat minus the defense stat of the enemy times the defense multiplier of their attack
-		enemy.setHealth(enemy.getHealth() - (playerAttack.getDamageMultiplier() * player.getDamage() - enemy.getDefense() * enemyAttack.getDefenseMultiplier()));
+		enemy.setHealth(int(enemy.getHealth() - (playerAttack.getDamageMultiplier() * player.getDamage() - enemy.getDefense() * enemyAttack.getDefenseMultiplier())));
 		//displays the current health of the enemy
 		cout << enemy.getName() << " health: " << enemy.getHealth() << endl;
 		//waits for user input before clearing screen
@@ -176,7 +176,7 @@ void enterBattle() {
 		//attack has been generated before, so it only prints out the attack name
 		cout << enemy.getName() << " used " << enemyAttack.getName() << "!" << endl;
 		//sets player health equal to their current health minus the damage multiplier on the enemy times their damage stat minus the defense stat of the player times the defense multiplier of their attack
-		player.setHealth(player.getHealth() - (enemyAttack.getDamageMultiplier() * enemy.getDamage() - player.getDefense() * playerAttack.getDefenseMultiplier()));
+		player.setHealth(int(player.getHealth() - (enemyAttack.getDamageMultiplier() * enemy.getDamage() - player.getDefense() * playerAttack.getDefenseMultiplier())));
 		//prints out the current player health
 		cout << player.getName() << " health: " << player.getHealth() << endl;
 		//waits for user input before clearing screen
