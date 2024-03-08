@@ -10,14 +10,15 @@ class Player : public Character
 	
 protected:
 	//has an inventory
-	Inventory inventory;
+	//Inventory inventory;
 
 public:
 	//The same constructor, for now, as the character class
 	Player(int life, int attack, int def, string nomen, double influence, int anno) :Character(life, attack, def, nomen, influence, anno) {
 		//sets inventory equal to list, which is new inventory type
-		Inventory list;
-		inventory = list;
+		Inventory* item;
+		item = new Inventory;
+		//inventory = list;
 	};
 
 	static Player generatePlayer(); //generates random enemy.  takes nothing in, creates an enemy with randiomly selected name, randomizes other character stats
