@@ -16,11 +16,11 @@ using namespace std;
 //will contain all of the enemy presidents
 vector <Enemy> enemyPresidents;
 
-//this is the player
-Player player(0,0,0,"",0.0,0);
-
 //this is the player's inventory
 Inventory inventory;
+
+//this is the player
+Player player(0, 0, 0, "", 0.0, 0, &inventory);
 
 //This function is the startup function and is meant to be called at the beginning of the game, so as to start up the game 
 void startup();

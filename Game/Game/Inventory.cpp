@@ -44,15 +44,14 @@ Item Inventory::getLast() {
 }
 
 //inputs nothing and returns Item
-Item Inventory::getCurrent() {
+Item* Inventory::getCurrent() {
 	//checks to see if list is not empty
 	if (index != nullptr) {
 		//returns index
-		return *index;
+		return index;
 	}
-	//if list is empty, it returns an empty Item
-	Item output(0, 0, 0, 0, "Nothing", 0, "Nothing", 0);
-	return output;
+	//if list is empty, it returns a nullptr
+	return nullptr;
 }
 
 //inputs Item newNode and returns nothing

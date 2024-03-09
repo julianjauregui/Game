@@ -10,7 +10,7 @@ protected:
 	string type;
 
 	//function to buy things from the shop
-	Item buy();
+	Item* buy();
 	//function to sell things to the shop
 	double sell(Inventory& possessions);
 

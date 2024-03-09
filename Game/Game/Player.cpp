@@ -27,16 +27,16 @@ Attack Player::chooseAttack(){
 }
 
 //returns inventory
-/*Inventory Player::getInventory()
+Inventory* Player::getInventory()
 {
     return inventory;
 }
 
 //sets inventory to list
-void Player::setInventory(Inventory& list)
+void Player::setInventory(Inventory* list)
 {
     inventory = list;
-}*/
+}
 
 //generates random enemy.  takes nothing in, creates an enemy with randiomly selected name, randomizes other character stats
 Player Player::generatePlayer()
@@ -71,8 +71,9 @@ Player Player::generatePlayer()
     index--;
 
     //generates the player object with the amateur stats
-
-    Player player(100, 5, 5, names[index], 0.0, 1790); 
+    //initializes empty inventory to take in
+    Inventory inventory;
+    Player player(100, 5, 5, names[index], 0.0, 1790, &inventory); 
 
     //initializes the characters attacks if he chooses to be joe biden
     if (names[index] == "Joe Biden")

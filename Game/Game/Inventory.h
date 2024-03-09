@@ -39,7 +39,7 @@ public:
 	//Returns the last Item in the Inventory
 	Item getLast();
 	//Returns the Item that is currently being indexed
-	Item getCurrent();
+	Item* getCurrent();
 	//Adds an Item to the end of the Inventory
 	void pushback(Item& newNode);
 	//Removes and Returns the final Item to the end of the Inventory
