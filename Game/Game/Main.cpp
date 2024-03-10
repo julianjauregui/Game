@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <ctime>
 #include "Inventory.h"
+#include "Shop.h"
 
 //THIS IS THE LIBRARY TO INCLUDE IN ORDER TO WIPE SCREEN (USE system("cls"); IN ORDER TO CLEAR THE SCREEN)
 #include <stdlib.h>
@@ -21,6 +22,11 @@ Inventory inventory;
 
 //this is the player
 Player player(0, 0, 0, "", 0.0, 0, &inventory);
+
+//these are the 3 shops
+Shop weaponsShop("Weapon");
+Shop armorShop("Armor");
+Shop potionShop("Potion");
 
 //This function is the startup function and is meant to be called at the beginning of the game, so as to start up the game 
 void startup();
@@ -129,6 +135,11 @@ void startup()
 	enemyPresidents = Enemy::makeBosses();
 	//generates the player with his desired president choice
 	player = Player::generatePlayer();
+	
+	//initializes all 3 shops
+	weaponsShop.initializeWeaponsShop();
+	armorShop.initializeArmorShop();
+	potionShop.initializePotionShop();
 }
 
 //This overworld function is still in production, so it says so
