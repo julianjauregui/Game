@@ -17,16 +17,11 @@ using namespace std;
 //will contain all of the enemy presidents
 vector <Enemy> enemyPresidents;
 
-//this is the player's inventory
+//this is the player's temporary inventory for game start up
 Inventory inventory;
 
 //this is the player
 Player player(0, 0, 0, "", 0.0, 0, &inventory);
-
-//these are the 3 shops
-Shop weaponsShop("Weapon");
-Shop armorShop("Armor");
-Shop potionShop("Potion");
 
 //This function is the startup function and is meant to be called at the beginning of the game, so as to start up the game 
 void startup();
@@ -135,11 +130,6 @@ void startup()
 	enemyPresidents = Enemy::makeBosses();
 	//generates the player with his desired president choice
 	player = Player::generatePlayer();
-	
-	//initializes all 3 shops
-	weaponsShop.initializeWeaponsShop();
-	armorShop.initializeArmorShop();
-	potionShop.initializePotionShop();
 }
 
 //This overworld function is still in production, so it says so
@@ -211,7 +201,7 @@ void enterBattle() {
 void manageInventory() {
 	//outputs the user's inventory
 	cout << "Welcome to your inventory. Please see what items you have: " << endl;
-	cout << inventory.to_string()<<endl;
+	cout << player.getInventory()->to_string() << endl;
 	//pauses and waits for input before continuing to main menu
 	system("pause");
 	system("cls");
@@ -219,7 +209,57 @@ void manageInventory() {
 
 //This shop function is still in production, so it says so
 void enterShop() {
-	cout << "Sorry, it appears that no shops have been developed yet." << endl;
+	cout << "Welcome to the shops, please select what shop you would like to interact with: " << endl;
+	cout << "1.Weapons shop" << endl;
+	cout << "2.Armor shop" << endl;
+	cout << "3.Potion shop" << endl;
+	int choice;
+	cin >> choice;
+	if (choice == 1) {
+		Shop weaponsShop("Weapon");
+		//makes 3 different items
+		//the stats are: health, damage, defense, fame, name, year, kind, and price 
+		Item nuke(-0.75, 100., 0., 100., "Nuke", 1947, "Weapon", 1000.);
+		Item gun(0.0, 10.0, 0.3, 0.0, "Gun", 1905, "Weapon", 25.);
+		Item pen(0., 5.0, 3.0, 10., "Pen", 1805, "Weapon", 1);
+
+		//puts all 3 items into the shop
+		weaponsShop.pushback(nuke);
+		weaponsShop.pushback(gun);
+		weaponsShop.pushback(pen);
+
+		weaponsShop.interact(player);
+	}
+	else if (choice == 2) {
+		Shop armorShop("Armor");
+		//makes 3 different items
+		//the stats are: health, damage, defense, fame, name, year, kind, and price 
+		Item log(0., 0.5, 10., 0., "Log", 1860, "Armor", 5.25);
+		Item counterEspionage(0, 0.0, 30.0, -20.0, "Gun", 1955, "Armor", 100.);
+		Item teddyBear(.5, 2.0, 5.0, 0., "Teddy Bear", 1905, "Armor", 30);
+
+		//puts all 3 items into the shop
+		armorShop.pushback(log);
+		armorShop.pushback(counterEspionage);
+		armorShop.pushback(teddyBear);
+
+		armorShop.interact(player);
+	}
+	else if (choice == 3) {
+		Shop potionShop("Potion");
+		//makes 3 different items
+		//the stats are: health, damage, defense, fame, name, year, kind, and price 
+		Item damagePotion(0., 1., 0., 0., "Damage Potion", 0, "Potion", 2.);
+		Item defensePotion(0, 0.0, 1.0, 0.0, "Defense Potion", 0, "Potion", 2.);
+		Item healthPotion(1., 0.0, 0.0, 0., "Health Potion", 0., "Potion", 2.);
+
+		//puts all 3 items into the shop
+		potionShop.pushback(damagePotion);
+		potionShop.pushback(defensePotion);
+		potionShop.pushback(healthPotion);
+
+		potionShop.interact(player);
+	}
 }
 
 //This chat function is still in production, so it says so

@@ -71,50 +71,6 @@ void Shop::interact(Player& user)
 	}
 }
 
-//initializes weapons shop
-void Shop::initializeWeaponsShop()
-{
-	//makes 3 different items
-	//the stats are: health, damage, defense, fame, name, year, kind, and price 
-	Item nuke(-0.75, 100., 0., 100., "Nuke", 1947, "Weapon", 1000.);
-	Item gun(0.0, 10.0, 0.3, 0.0, "Gun", 1905, "Weapon", 25.);
-	Item pen(0., 5.0, 3.0, 10., "Pen", 1805, "Weapon", 1);
-	
-	//puts all 3 items into the shop
-	pushback(nuke);
-	pushback(gun);
-	pushback(pen);
-}
-
-//initializes armor shop
-void Shop::initializeArmorShop()
-{
-	//makes 3 different items
-	//the stats are: health, damage, defense, fame, name, year, kind, and price 
-	Item log(0., 0.5, 10., 0., "Log", 1860, "Armor", 5.25);
-	Item counterEspionage(0, 0.0, 30.0, -20.0, "Gun", 1955, "Armor", 100.);
-	Item teddyBear(.5, 2.0, 5.0, 0., "Teddy Bear", 1905, "Armor", 30);
-
-	//puts all 3 items into the shop
-	pushback(log);
-	pushback(counterEspionage);
-	pushback(teddyBear);
-}
-
-void Shop::initializePotionShop()
-{
-	//makes 3 different items
-	//the stats are: health, damage, defense, fame, name, year, kind, and price 
-	Item damagePotion(0., 1., 0., 0., "Damage Potion", 0, "Potion", 2.);
-	Item defensePotion(0, 0.0, 1.0, 0.0, "Defense Potion", 0, "Potion", 2.);
-	Item healthPotion(1., 0.0, 0.0, 0., "Health Potion", 0., "Potion", 2.);
-
-	//puts all 3 items into the shop
-	pushback(damagePotion);
-	pushback(defensePotion);
-	pushback(healthPotion);
-}
-
 //helper function for interact
 Item* Shop::buy()
 {
@@ -126,14 +82,14 @@ Item* Shop::buy()
     int choice = 0;
 
 	//while no valid choice has been made
-    while (choice <= 0 || choice > size()) {
+    while (choice <= 0 || choice > size) {
 		//tells the user to pick what item they want
         cout << "Enter the number next to the thing that you would like to buy: ";
 		//user enters their choice
         cin >> choice;
 
 		//if the user does not have a valid choice
-		if (choice <= 0 || choice > size()) {
+		if (choice <= 0 || choice > size) {
 			//tells them that they have not made a valid choice
 			cout << "Please choose a valid number: " << endl;
 		}
@@ -155,14 +111,14 @@ double Shop::sell(Inventory& possessions)
     int choice = 0;
 
 	//while no valid choice has been made
-    while (choice <= 0 || choice > possessions.size()) {
+    while (choice <= 0 || choice > possessions.getSize()) {
 		//tells the user to pick what item they want
         cout << "Enter the number next to the thing that you would like to buy: ";
 		//user enters their choice
         cin >> choice;
 
 		//if the user does not have a valid choice
-		if (choice <= 0 || choice > size()) {
+		if (choice <= 0 || choice > size) {
 			//tells the user that they have not yet made a valid choice
 			cout << "Please choose a valid number: " << endl;
 		}

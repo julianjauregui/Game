@@ -29,8 +29,4 @@ public:
 	//function to interact with shop
 	void interact(Player& user);
 
-	//initializers for different kinds of shops
-	void initializeWeaponsShop();
-	void initializeArmorShop();
-	void initializePotionShop();
 };

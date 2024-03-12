@@ -57,7 +57,7 @@ Item* Inventory::getCurrent() {
 //inputs Item newNode and returns nothing
 void Inventory::pushback(Item& newNode) {
 	//checks to see if list is empty
-	if (last == nullptr) {
+	if (size == 0) {
 		//if list is empty, it sets first equal to the newNode address
 		first = &newNode;
 		//if list is empty, it sets last equal to the newNode address
@@ -77,10 +77,16 @@ void Inventory::pushback(Item& newNode) {
 		//sets index back to the begining
 		index = first;
 	}
+
+	//adds one to size
+	size++;
 }
 
 //inputs nothing and returns Item
 Item Inventory::popBack() {
+	//subtracts one from size
+	size--;
+
 	//if list is empty
 	if (last == nullptr) {
 		//returns a default Item
@@ -113,39 +119,6 @@ Item Inventory::popBack() {
 	return temp;
 }
 
-//inputs nothing and outputs an int
-int Inventory::size() {
-	//sets an iterator at the begining
-	Item* iterator = first;
-
-	//checks to see if list is empty
-	if (first == nullptr) {
-		//if it is empty, it returns 0
-		return 0;
-	}
-
-	//makes a bool which is used to indicate if the iterator is at the end of the list
-	bool end = false;
-	//creates a counter to be able to add up all the items
-	int count = 0;
-
-	//while the iterator is not at the end of the list
-	while (!end) {
-		//it checks to see if iterator is an item
-		if (iterator != nullptr) {
-			//sets iterator equal to the next item
-			iterator = iterator->getNextItem();
-			//adds one to the count
-			count++;
-		}
-		//if the iterator is no longer pointing to an item
-		if (iterator == nullptr) {
-			//it returns the count
-			return count;
-		}
-	}
-}
-
 //inputs 2 Items, prevNode and newNode, and returns nothing
 void Inventory::insertAfter(Item& prevNode, Item& newNode)
 {
@@ -162,6 +135,9 @@ void Inventory::insertAfter(Item& prevNode, Item& newNode)
 	
 	//sets index equal to the address of the newNode
 	index = &newNode;
+
+	//adds one to size
+	size++;
 }
 
 //inputs newNode and returns nothing
@@ -174,11 +150,17 @@ void Inventory::pushFront(Item& newNode) {
 	first = &newNode;
 	//sets index equal to the address of the newNode
 	index = first;
+
+	//adds one to size
+	size++;
 }
 
 //inputs nothing and returns Item
 Item Inventory::deleteCurrent()
 {
+	//subtracts one from size
+	size--;
+
 	//checks to see if the list is not empty
 	if (index != nullptr) {
 		//checks to see if the index if not the first item in the list
@@ -231,6 +213,9 @@ Item Inventory::deleteCurrent()
 
 //inputs nothing and returns an Item
 Item Inventory::popFront() {
+	//subtracts one from size
+	size--;
+
 	//if list is not empty
 	if (first != nullptr) {
 		//creates a temporary copy Item equal to first
@@ -254,18 +239,16 @@ Item Inventory::popFront() {
 string Inventory::to_string()
 {
 	//if the list is empty, it says so
-	if (size() == 0) {
+	if (size == 0) {
 		return "The inventory is currently empty, go buy some things to make it bigger.";
 	}
 	//makes a temporary iterator item that is starts at first
 	Item* iterator = first;
 	//makes a string called list that is empty but will have all the info later on
 	std::string list = "";
-	//sets count equal to the size of the list
-	int count = this->size();
-	
+
 	//while the list is not at the end
-	for (int pos = 0; pos < count; pos++) {
+	for (int pos = 0; pos < size; pos++) {
 		//it adds the number of the iteration starting at 1
 		list += (pos + 1);
 		//adds a coma before adding all the information of the item
@@ -284,7 +267,13 @@ void Inventory::setCurrent(int n)
 	//makes index be at the begining of the list
 	index = first;
 	//increments index one by one until it gets to the desired node
-	for (int i = 1; i < n && i != this->size(); i++) {
+	for (int i = 1; i < n && i != size; i++) {
 		index = index->getNextItem();
 	}
+}
+
+//returns size
+int Inventory::getSize()
+{
+	return size;
 }

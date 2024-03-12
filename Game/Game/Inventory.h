@@ -19,6 +19,8 @@ protected:
 	Item* first = nullptr;
 	//pointer to the last pointer in the Inventory
 	Item* last = nullptr;
+	//holds the size of the list
+	int size = 0;
 
 public:
 	//Initializes Inventory with all nullptr values
@@ -44,8 +46,6 @@ public:
 	void pushback(Item& newNode);
 	//Removes and Returns the final Item to the end of the Inventory
 	Item popBack();
-	//Returns the size of the Inventory
-	int size();
 	//Adds a new Item between 2 different Nodes
 	void insertAfter(Item& prevNode, Item& newNode);
 	//Adds a new Node to the front of the Inventory
@@ -58,4 +58,6 @@ public:
 	string to_string();
 	//moves index to the nth Item in the Inventory
 	void setCurrent(int n);
+	//returns size
+	int getSize();
 };
