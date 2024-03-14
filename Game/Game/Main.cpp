@@ -228,6 +228,7 @@ void enterShop() {
 		weaponsShop.pushback(gun);
 		weaponsShop.pushback(pen);
 
+		//player interacts with weaponsShop
 		weaponsShop.interact(player);
 	}
 	else if (choice == 2) {
@@ -243,6 +244,7 @@ void enterShop() {
 		armorShop.pushback(counterEspionage);
 		armorShop.pushback(teddyBear);
 
+		//player interacts with armorShop
 		armorShop.interact(player);
 	}
 	else if (choice == 3) {
@@ -258,6 +260,7 @@ void enterShop() {
 		potionShop.pushback(defensePotion);
 		potionShop.pushback(healthPotion);
 
+		//player interacts with potionShop
 		potionShop.interact(player);
 	}
 }

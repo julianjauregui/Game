@@ -104,6 +104,11 @@ Item* Shop::buy()
 //helper function for interaction
 double Shop::sell(Inventory& possessions)
 {
+	//checks to see if inventroy is empty before selling things
+	if (possessions.getSize() == 0) {
+		cout << "Your inventory is currenlty empty. You have nothing to sell." << endl;
+		return 0.0;
+	}
 	//displays all of user inventory's contents and welcomes them to shop
     cout << "Welcome to the " + type + " shop. What would you like to sell: ";
     cout << possessions.to_string();
@@ -113,7 +118,7 @@ double Shop::sell(Inventory& possessions)
 	//while no valid choice has been made
     while (choice <= 0 || choice > possessions.getSize()) {
 		//tells the user to pick what item they want
-        cout << "Enter the number next to the thing that you would like to buy: ";
+        cout << "Enter the number next to the thing that you would like to sell: ";
 		//user enters their choice
         cin >> choice;
 
