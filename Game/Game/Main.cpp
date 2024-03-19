@@ -17,11 +17,35 @@ using namespace std;
 //will contain all of the enemy presidents
 vector <Enemy> enemyPresidents;
 
-//this is the player's temporary inventory for game start up
+//this is the player's inventory for game start up
 Inventory inventory;
 
 //this is the player
-Player player(0, 0, 0, "", 0.0, 0, &inventory);
+Player player(0, 0, 0, "", 0.0, 0);
+
+//initializes weaponsShop
+Shop weaponsShop("Weapon");
+//makes 3 different items
+//the stats are: health, damage, defense, fame, name, year, kind, and price 
+Item nuke(-0.75, 100., 0., 100., "Nuke", 1947, "Weapon", 1000.);
+Item gun(0.0, 10.0, 0.3, 0.0, "Gun", 1905, "Weapon", 25.);
+Item pen(0., 5.0, 3.0, 10., "Pen", 1805, "Weapon", 1);
+
+//initializes armorShop
+Shop armorShop("Armor");
+//makes 3 different items
+//the stats are: health, damage, defense, fame, name, year, kind, and price 
+Item logs(0., 0.5, 10., 0., "Log", 1860, "Armor", 5.25);
+Item counterEspionage(0, 0.0, 30.0, -20.0, "Gun", 1955, "Armor", 100.);
+Item teddyBear(.5, 2.0, 5.0, 0., "Teddy Bear", 1905, "Armor", 30);
+
+//makes potionShop
+Shop potionShop("Potion");
+//makes 3 different items
+//the stats are: health, damage, defense, fame, name, year, kind, and price 
+Item damagePotion(0., 1., 0., 0., "Damage Potion", 0, "Potion", 2.);
+Item defensePotion(0, 0.0, 1.0, 0.0, "Defense Potion", 0, "Potion", 2.);
+Item healthPotion(1., 0.0, 0.0, 0., "Health Potion", 0., "Potion", 2.);
 
 //This function is the startup function and is meant to be called at the beginning of the game, so as to start up the game 
 void startup();
@@ -130,6 +154,23 @@ void startup()
 	enemyPresidents = Enemy::makeBosses();
 	//generates the player with his desired president choice
 	player = Player::generatePlayer();
+
+	//puts all 3 items into the potionShop
+	weaponsShop.pushback(nuke);
+	weaponsShop.pushback(gun);
+	weaponsShop.pushback(pen);
+
+	//puts all 3 items into the potionShop
+	armorShop.pushback(logs);
+	armorShop.pushback(counterEspionage);
+	armorShop.pushback(teddyBear);
+
+
+	//puts all 3 items into the potionShop
+	potionShop.pushback(damagePotion);
+	potionShop.pushback(defensePotion);
+	potionShop.pushback(healthPotion);
+
 }
 
 //This overworld function is still in production, so it says so
@@ -201,7 +242,7 @@ void enterBattle() {
 void manageInventory() {
 	//outputs the user's inventory
 	cout << "Welcome to your inventory. Please see what items you have: " << endl;
-	cout << player.getInventory()->to_string() << endl;
+	cout << inventory.to_string() << endl;
 	//pauses and waits for input before continuing to main menu
 	system("pause");
 	system("cls");
@@ -216,52 +257,16 @@ void enterShop() {
 	int choice;
 	cin >> choice;
 	if (choice == 1) {
-		Shop weaponsShop("Weapon");
-		//makes 3 different items
-		//the stats are: health, damage, defense, fame, name, year, kind, and price 
-		Item nuke(-0.75, 100., 0., 100., "Nuke", 1947, "Weapon", 1000.);
-		Item gun(0.0, 10.0, 0.3, 0.0, "Gun", 1905, "Weapon", 25.);
-		Item pen(0., 5.0, 3.0, 10., "Pen", 1805, "Weapon", 1);
-
-		//puts all 3 items into the shop
-		weaponsShop.pushback(nuke);
-		weaponsShop.pushback(gun);
-		weaponsShop.pushback(pen);
-
 		//player interacts with weaponsShop
-		weaponsShop.interact(player);
+		weaponsShop.interact(player, inventory);
 	}
 	else if (choice == 2) {
-		Shop armorShop("Armor");
-		//makes 3 different items
-		//the stats are: health, damage, defense, fame, name, year, kind, and price 
-		Item log(0., 0.5, 10., 0., "Log", 1860, "Armor", 5.25);
-		Item counterEspionage(0, 0.0, 30.0, -20.0, "Gun", 1955, "Armor", 100.);
-		Item teddyBear(.5, 2.0, 5.0, 0., "Teddy Bear", 1905, "Armor", 30);
-
-		//puts all 3 items into the shop
-		armorShop.pushback(log);
-		armorShop.pushback(counterEspionage);
-		armorShop.pushback(teddyBear);
-
 		//player interacts with armorShop
-		armorShop.interact(player);
+		armorShop.interact(player, inventory);
 	}
 	else if (choice == 3) {
-		Shop potionShop("Potion");
-		//makes 3 different items
-		//the stats are: health, damage, defense, fame, name, year, kind, and price 
-		Item damagePotion(0., 1., 0., 0., "Damage Potion", 0, "Potion", 2.);
-		Item defensePotion(0, 0.0, 1.0, 0.0, "Defense Potion", 0, "Potion", 2.);
-		Item healthPotion(1., 0.0, 0.0, 0., "Health Potion", 0., "Potion", 2.);
-
-		//puts all 3 items into the shop
-		potionShop.pushback(damagePotion);
-		potionShop.pushback(defensePotion);
-		potionShop.pushback(healthPotion);
-
 		//player interacts with potionShop
-		potionShop.interact(player);
+		potionShop.interact(player, inventory);
 	}
 }
 

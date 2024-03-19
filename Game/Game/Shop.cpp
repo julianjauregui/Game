@@ -13,7 +13,7 @@ void Shop::setType(string kind)
     type = kind;
 }
 
-void Shop::interact(Player& user)
+void Shop::interact(Player& user, Inventory& list)
 {
 	//Selection is the number of choice that the user does, from 1 to 3 being accounted for; it set equal to zero before any choice has been made
 	int selection = 0;
@@ -44,7 +44,7 @@ void Shop::interact(Player& user)
 			//sets bought equal to the item that was just bought
 			bought = buy();
 			//adds bought to the inventory
-			user.getInventory()->pushback(*bought);
+			list.pushback(*bought);
 			//subtracts the amount of cost from the fame
 			user.setFame(user.getFame() - bought->getCost());
 			break;
@@ -53,7 +53,7 @@ void Shop::interact(Player& user)
 		case 2:
 			//clears screen and then calls sell
 			system("cls");
-			sell(*(user.getInventory()));
+			sell(list);
 			break;
 
 			//The third option is the inventory function, that is called to manage and change and view the player's inventory

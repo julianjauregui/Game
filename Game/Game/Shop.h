@@ -27,6 +27,6 @@ public:
 	void setType(string kind);
 
 	//function to interact with shop
-	void interact(Player& user);
+	void interact(Player& user, Inventory& list);
 
 };
