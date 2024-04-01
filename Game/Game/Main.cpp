@@ -36,7 +36,7 @@ Shop armorShop("Armor");
 //makes 3 different items
 //the stats are: health, damage, defense, fame, name, year, kind, and price 
 Item logs(0., 0.5, 10., 0., "Log", 1860, "Armor", 5.25);
-Item counterEspionage(0, 0.0, 30.0, -20.0, "Gun", 1955, "Armor", 100.);
+Item counterEspionage(0, 0.0, 30.0, -20.0, "Counter Espionage", 1955, "Armor", 100.);
 Item teddyBear(.5, 2.0, 5.0, 0., "Teddy Bear", 1905, "Armor", 30);
 
 //makes potionShop
@@ -199,7 +199,9 @@ void enterBattle() {
 		cout << player.getName() << " used " << playerAttack.getName() << "!" << endl;
 
 		//sets enemy health equal to their current health minus the damage multiplier on the player times their damage stat minus the defense stat of the enemy times the defense multiplier of their attack
-		enemy.setHealth(int(enemy.getHealth() - (playerAttack.getDamageMultiplier() * player.getDamage() - enemy.getDefense() * enemyAttack.getDefenseMultiplier())));
+		if (int(enemy.getHealth() - (playerAttack.getDamageMultiplier() * player.getDamage() - enemy.getDefense() * enemyAttack.getDefenseMultiplier())) < enemy.getHealth()) {
+			enemy.setHealth(int(enemy.getHealth() - (playerAttack.getDamageMultiplier() * player.getDamage() - enemy.getDefense() * enemyAttack.getDefenseMultiplier())));
+		}
 		//displays the current health of the enemy
 		cout << enemy.getName() << " health: " << enemy.getHealth() << endl;
 		//waits for user input before clearing screen
@@ -218,7 +220,9 @@ void enterBattle() {
 		//attack has been generated before, so it only prints out the attack name
 		cout << enemy.getName() << " used " << enemyAttack.getName() << "!" << endl;
 		//sets player health equal to their current health minus the damage multiplier on the enemy times their damage stat minus the defense stat of the player times the defense multiplier of their attack
-		player.setHealth(int(player.getHealth() - (enemyAttack.getDamageMultiplier() * enemy.getDamage() - player.getDefense() * playerAttack.getDefenseMultiplier())));
+		if (int(player.getHealth() - (enemyAttack.getDamageMultiplier() * enemy.getDamage() - player.getDefense() * playerAttack.getDefenseMultiplier())) < player.getHealth()) {
+			player.setHealth(int(player.getHealth() - (enemyAttack.getDamageMultiplier() * enemy.getDamage() - player.getDefense() * playerAttack.getDefenseMultiplier())));
+		}
 		//prints out the current player health
 		cout << player.getName() << " health: " << player.getHealth() << endl;
 		//waits for user input before clearing screen
@@ -242,7 +246,7 @@ void enterBattle() {
 void manageInventory() {
 	//outputs the user's inventory
 	cout << "Welcome to your inventory. Please see what items you have: " << endl;
-	cout << inventory.to_string() << endl;
+	cout << inventory.makeString() << endl;
 	//pauses and waits for input before continuing to main menu
 	system("pause");
 	system("cls");

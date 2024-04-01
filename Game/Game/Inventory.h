@@ -55,7 +55,7 @@ public:
 	//Returns and Removes the first element in the list
 	Item popFront();
 	//Returns all the Inventory information in a string
-	string to_string();
+	string makeString();
 	//moves index to the nth Item in the Inventory
 	void setCurrent(int n);
 	//returns size

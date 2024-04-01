@@ -75,9 +75,9 @@ void Shop::interact(Player& user, Inventory& list)
 Item* Shop::buy()
 {
 	//welcomes the user into the shop
-    cout << "Welcome to the " + type + " shop. What would you like to buy: ";
+    cout << "Welcome to the " + type + " shop. What would you like to buy: "<<endl;
 	//prints out shop contents
-    cout << to_string();
+    cout << makeString();
 	//starts the choice for what the user will pick at 0
     int choice = 0;
 
@@ -110,8 +110,8 @@ double Shop::sell(Inventory& possessions)
 		return 0.0;
 	}
 	//displays all of user inventory's contents and welcomes them to shop
-    cout << "Welcome to the " + type + " shop. What would you like to sell: ";
-    cout << possessions.to_string();
+    cout << "Welcome to the " + type + " shop. What would you like to sell: "<<endl;
+    cout << possessions.makeString();
 	//starts the choice for what the user will pick at 0
     int choice = 0;
 
@@ -131,10 +131,15 @@ double Shop::sell(Inventory& possessions)
 
 	//sets current index of user's inventory to choice
     possessions.setCurrent(choice);
+
+	//tells the user that the thing he selected is being sold
+	cout << "Selling " << possessions.getCurrent()->getName()<<endl;
 	//gets the cost for the item indexed at choice
     int cost = int(possessions.getCurrent()->getCost());
 	//removes current from the list of choices
-	deleteCurrent();
+	possessions.deleteCurrent();
+	system("pause");
+	system("cls");
 	//returns the int value of the cost from this item
     return cost;
 }

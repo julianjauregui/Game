@@ -236,7 +236,7 @@ Item Inventory::popFront() {
 }
 
 //inputs nothing and outputs a string
-string Inventory::to_string()
+string Inventory::makeString()
 {
 	//if the list is empty, it says so
 	if (size == 0) {
@@ -252,7 +252,7 @@ string Inventory::to_string()
 		//it adds the number of the iteration starting at 1
 		list += (pos + 1);
 		//adds a coma before adding all the information of the item
-		list += ", " + iterator->toString() + '\n';
+		list += to_string(pos+1) + ", " + iterator->toString() + '\n';
 		//sets iterator to the next iterator
 		iterator = iterator->getNextItem();
 	}

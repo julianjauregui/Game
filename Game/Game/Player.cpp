@@ -98,8 +98,8 @@ Player Player::generatePlayer()
 
         //adds attacks to the president
         player.addAttack(Attack(10.0, 1.0, "takes you out like osama bin laden"));
-        player.addAttack(Attack(7.5, 2.5, "im black..but the good kind")); //MIGHT HAVE TO CHANGE  
-        player.addAttack(Attack(5.0, 7.5, "ill deliver a fiery speech about you that effectively sounds nothing, but it sounds inspiring"));
+        player.addAttack(Attack(7.5, 2.5, "Gives himself a medal")); 
+        player.addAttack(Attack(5.0, 7.5, "ill deliver a fiery speech about you that effectively means nothing, but it sounds inspiring"));
     }
 
     //initializes the characters attacks if he chooses to be George W. Bush
