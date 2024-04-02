@@ -12,12 +12,12 @@ protected:
     string name;
     //makes a momentary talkerPhrase to fill tree
     talkerPhrase* momentary;
-    //will be a form of a dialouge tree, which is a non-full 3-level binary tree
-    talkerPhrase dialougeTree[6] = { *momentary, *momentary, *momentary,*momentary,*momentary,*momentary };
+    //will be a form of a dialouge tree, which is a full 3-level binary tree
+    talkerPhrase dialougeTree[10] = { *momentary, *momentary, *momentary,*momentary,*momentary,*momentary };
 
 public:
     //nomen and arr will be passed in
-    talker(string nomen, talkerPhrase arr[6]) {
+    talker(string nomen, talkerPhrase arr[10]) {
         name = nomen;
         //sets every element in dialougeTree to it's corresponding element in arr
         for (int i = 0; i < 6; i++){
