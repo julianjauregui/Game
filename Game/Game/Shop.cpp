@@ -98,7 +98,7 @@ Item* Shop::buy()
 	//sets current index to choice, since that is the number that they have chosen
     setCurrent(choice);
 	//returns the item at that location
-    //new Item output(getCurrent().getHealth(), getCurrent().get)
+	return getCurrent();
 }
 
 //helper function for interaction

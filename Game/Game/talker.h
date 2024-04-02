@@ -3,6 +3,7 @@
 #include <string>
 using namespace std;
 #include "talkerPhrase.h"
+#include <stdlib.h>
 
 class talker
 {
@@ -27,7 +28,9 @@ public:
     //getter for name, because name will be used later on
     string getName();
 
-    void talk(int selection);
+    //main interface for player to talk to talker
+    void talk(int index);
 
+    array<talker,2> initialize();
 };
 
