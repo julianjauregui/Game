@@ -1,0 +1,33 @@
+//this class will be the talker class, which will do nothing but talk to the player
+#pragma once
+#include <string>
+using namespace std;
+#include "talkerPhrase.h"
+
+class talker
+{
+protected:
+    //every talker will have a name
+    string name;
+    //makes a momentary talkerPhrase to fill tree
+    talkerPhrase* momentary;
+    //will be a form of a dialouge tree, which is a non-full 3-level binary tree
+    talkerPhrase dialougeTree[6] = { *momentary, *momentary, *momentary,*momentary,*momentary,*momentary };
+
+public:
+    //nomen and arr will be passed in
+    talker(string nomen, talkerPhrase arr[6]) {
+        name = nomen;
+        //sets every element in dialougeTree to it's corresponding element in arr
+        for (int i = 0; i < 6; i++){
+            dialougeTree[i] = arr[i];
+        }
+    }
+
+    //getter for name, because name will be used later on
+    string getName();
+
+    void talk(int selection);
+
+};
+
