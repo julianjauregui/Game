@@ -31,6 +31,6 @@ public:
     //main interface for player to talk to talker
     void talk(int index);
 
-    array<talker,2> initialize();
+    std::array<talker,2> initialize();
 };
 
