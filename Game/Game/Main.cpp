@@ -186,6 +186,12 @@ void returnToOverworld() {
 
 //This enterBattle function, the arena whwere battles are fought
 void enterBattle() {
+	if (player.getHealth() <= 0) {
+		cout << "You are already dead. You did not live to fight another fight."<<endl;
+		system("pause");
+		system("cls");
+		return;
+	}
 	//initializes the random enemy that the user will be fighting
 	Enemy enemy = Enemy::generateEnemy();
 	cout << "A wild " << enemy.getName() << " appeared!" << endl;
@@ -218,6 +224,7 @@ void enterBattle() {
 		if (enemy.getHealth() <= 0) {
 			//tells the user that the enemy has been defeated
 			cout << "Congratulations! You defeated the " << enemy.getName() << "!" << endl;
+			player.setFame(player.getFame() + enemy.getFame());
 			//breaks out of the attack sequence while loop
 			break;
 		}
