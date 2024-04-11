@@ -21,6 +21,13 @@ public:
 		secondResponse = responseB;
 	}
 
+	//default constructor for talkerPhrase
+	talkerPhrase() {
+		talker = "";
+		firstResponse = "";
+		secondResponse = "";
+	}
+
 	//getters for talker, and the response options
 	string getTalker();
 	string getFirstResponse();

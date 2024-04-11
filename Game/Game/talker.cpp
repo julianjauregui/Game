@@ -23,6 +23,7 @@ void talker::talk(int index)
         cout << "Pick your response: " << endl;
         cout << "1. " << dialougeTree[index].getFirstResponse() << endl;
         cout << "2. " << dialougeTree[index].getSecondResponse() << endl;
+        cin >> selection;
         if (selection != 1 && selection != 2) {
             cout << "Invalid response, please try again." << endl;
         }
@@ -30,15 +31,17 @@ void talker::talk(int index)
 
     if (selection == 1) {
         index = index * 2 + 1;
+        system("cls");
     }
     else if (selection == 2) {
         index = index * 2 + 2;
+        system("cls");
     }
  
     talk(index);
 }
 
-std::array<talker,2> talker::initialize()
+vector<talker> talker::initialize()
 {
     //goes to second and then third (part of zeroeth level)
     talkerPhrase firstBeg("Hello, welcome to the United States, the country where politics is literally life or death.", "Hello, what's your name?", "Amurica!!!!");
@@ -105,9 +108,9 @@ std::array<talker,2> talker::initialize()
     //leads nowhere (part of third level)
     talkerPhrase fifteenthEnd("And a wise man never wastes his time talking to one. Leave me, you worthless politician...", "", "");
 
-    talkerPhrase endingPhrases[15] = { firstBeg, secondBeg, thirdBeg, fourthBeg, fifthBeg, sixthBeg, seventhBeg, eigthBeg, ninthBeg, tenthBeg, eleventhBeg, twelthBeg, thirteenthBeg, fourteenthBeg, fifteenthBeg };
-    talker end("First Speaker", beginingPhrases);
-    array<talker,2> output = { begining, end };
+    talkerPhrase endingPhrases[15] = { firstEnd, secondEnd, thirdEnd, fourthEnd, fifthEnd, sixthEnd, seventhEnd, eigthEnd, ninthEnd, tenthEnd, eleventhEnd, twelthEnd, thirteenthEnd, fourteenthEnd, fifteenthEnd};
+    talker end("Final Speaker", endingPhrases);
+    vector<talker> output = { begining, end };
 
     return output;
 }

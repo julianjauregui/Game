@@ -8,6 +8,7 @@
 #include <ctime>
 #include "Inventory.h"
 #include "Shop.h"
+#include "talker.h"
 
 //THIS IS THE LIBRARY TO INCLUDE IN ORDER TO WIPE SCREEN (USE system("cls"); IN ORDER TO CLEAR THE SCREEN)
 #include <stdlib.h>
@@ -46,6 +47,9 @@ Shop potionShop("Potion");
 Item damagePotion(0., 1., 0., 0., "Damage Potion", 0, "Potion", 2.);
 Item defensePotion(0, 0.0, 1.0, 0.0, "Defense Potion", 0, "Potion", 2.);
 Item healthPotion(1., 0.0, 0.0, 0., "Health Potion", 0., "Potion", 2.);
+
+//contains all the talkers
+vector <talker> talkingNPCs;
 
 //This function is the startup function and is meant to be called at the beginning of the game, so as to start up the game 
 void startup();
@@ -171,6 +175,8 @@ void startup()
 	potionShop.pushback(defensePotion);
 	potionShop.pushback(healthPotion);
 
+	//instantiates the 2 talking NPCs
+	talkingNPCs = talker::initialize();
 }
 
 //This overworld function is still in production, so it says so
@@ -258,6 +264,7 @@ void enterShop() {
 	cout << "1.Weapons shop" << endl;
 	cout << "2.Armor shop" << endl;
 	cout << "3.Potion shop" << endl;
+	cout << "Enter any other number to return to the home screen." << endl;
 	int choice;
 	cin >> choice;
 	if (choice == 1) {
@@ -276,7 +283,17 @@ void enterShop() {
 
 //This chat function is still in production, so it says so
 void chat() {
-	cout << "Sorry, there are no people to chat to yet." << endl;
+	cout << "Who would you like to speak to today: " << endl;
+	cout << "1.Begining dude" << endl;
+	cout << "2.End dude" << endl;
+	cout << "Enter any other number to return to the home screen." << endl;
+	int choice;
+	cin >> choice;
+	if (choice == 1 || choice == 2) {
+		//player interacts with weaponsShop
+		talker speaker = (talkingNPCs[(choice - 1)]);
+		speaker.talk(0);
+	}
 }
 
 //This function prints a message to tell the user that it is leaving the menu selection
