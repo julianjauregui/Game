@@ -139,3 +139,13 @@ string Item::toString()
 	//returns the output string
 	return output;
 }
+
+string Item::inventoryString()
+{
+
+	//output string has this format:
+	//$NAME is a $TYPE, and it increases your defense by $DEFENSEEFFECT% and your damage by $DAMAGEEFFECT%, restores $HEALTHEFFECT% amount of health, and permanently increases your fame by $FAMEEFFECT%.
+	string output = name + " is a " + type + ", and it increases your defense by " + to_string(defenseEffect) + "% and your damage by " + to_string(damageEffect) + ", restores " + to_string(healthEffect) + "% amount of health, and permanently increases your fame by  " + to_string(fameEffect) + "%." + "You own" + to_string(amount);
+	//returns the output string
+	return output;
+}

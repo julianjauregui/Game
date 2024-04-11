@@ -25,6 +25,9 @@ protected:
 	//each item has a cost
 	double cost;
 
+	//amount of items in tree
+	int amount = 0;
+
 public:
 	//initializes item with health, damage, defense, fame, name, year, kind, and price stats; sets pointers to null
 	Item(double health, double damage, double defense, double fame, string nomen, int anno, string kind, double price) {
@@ -94,5 +97,7 @@ public:
 
 	//returns a string with all of the item information
 	string toString();
+
+	string inventoryString();
 };
 

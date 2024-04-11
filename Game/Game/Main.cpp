@@ -177,6 +177,16 @@ void startup()
 
 	//instantiates the 2 talking NPCs
 	talkingNPCs = talker::initialize();
+
+	inventory.pushback(nuke);
+	inventory.pushback(gun);
+	inventory.pushback(pen);
+	inventory.pushback(logs);
+	inventory.pushback(counterEspionage);
+	inventory.pushback(teddyBear);
+	inventory.pushback(damagePotion);
+	inventory.pushback(defensePotion);
+	inventory.pushback(healthPotion);
 }
 
 //This overworld function is still in production, so it says so
@@ -229,7 +239,7 @@ void enterBattle() {
 			break;
 		}
 
-		// Enemy's turn
+		//Enemy's turn
 		//attack has been generated before, so it only prints out the attack name
 		cout << enemy.getName() << " used " << enemyAttack.getName() << "!" << endl;
 		//sets player health equal to their current health minus the damage multiplier on the enemy times their damage stat minus the defense stat of the player times the defense multiplier of their attack
