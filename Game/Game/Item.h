@@ -73,6 +73,7 @@ public:
 	string getType();
 	//returns cost
 	double getCost();
+	int getAmount();
 
 	//sets nextItem pointer equal to next
 	void setNextItem(Item* next);
@@ -94,6 +95,7 @@ public:
 	void setType(string kind);
 	//sets cost equal to price
 	void setCost(double price);
+	void setAmount(int numy);
 
 	//returns a string with all of the item information
 	string toString();

@@ -10,9 +10,9 @@ protected:
 	string type;
 
 	//function to buy things from the shop
-	Item* buy();
+	void buy(Player user);
 	//function to sell things to the shop
-	double sell(Inventory& possessions);
+	void sell(Inventory& possessions, Player user);
 
 public:
 	//inputs kind and makes shop of type inventory
@@ -28,5 +28,6 @@ public:
 
 	//function to interact with shop
 	void interact(Player& user, Inventory& list);
+	string toString();
 
 };

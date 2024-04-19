@@ -42,6 +42,6 @@ string Attack::toString(double damage, double def)
 {
 	//makes a string called output that has all the information for the attack being done by a specific character
 	//Format will be: "$ATTACK does $NUMBER damage and increases the characters defense by $DEFENSE.
-	string output = name + " does " + (to_string(damage * damageMultiplier)) + " damage and increases the characters defense by " + (to_string(def * defenseMultiplier));
+	string output = name + " \n\tdoes " + (to_string(damage * damageMultiplier)) + " damage \n\tIncreases the characters defense by " + (to_string(def * defenseMultiplier));
 	return output;
 }

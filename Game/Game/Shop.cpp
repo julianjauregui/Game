@@ -23,13 +23,14 @@ void Shop::interact(Player& user, Inventory& list)
 	Item* bought;
 
 	//repeats the menu until the player chooses 3, which makes the player leave the shop
-	while (selection != 3) {
+	while (selection != 4) {
 
 		//Prints out the main menu choices, with each option being its own line
 		cout << "Welcome to the" + type + " shop.Pick what you would like to do: " << endl;
 		cout << "1. Buy." << endl;
 		cout << "2. Sell." << endl;
-		cout << "3. Leave." << endl;
+		cout << "3. View your current fame (money value)" << endl; 
+		cout << "4. Leave." << endl;
 		//Enters the selection from the user of what function they want to call
 		cin >> selection;
 
@@ -41,23 +42,24 @@ void Shop::interact(Player& user, Inventory& list)
 		case 1:
 			//clears screen and then calls buy
 			system("cls");
-			//sets bought equal to the item that was just bought
-			bought = buy();
-			//adds bought to the inventory
-			list.pushback(*bought);
-			//subtracts the amount of cost from the fame
-			user.setFame(user.getFame() - bought->getCost());
+			//user buys
+			buy(user);
 			break;
 
 			//The second option is the sell function, which is called to sell an item
 		case 2:
 			//clears screen and then calls sell
 			system("cls");
-			sell(list);
+			sell(list, user);
 			break;
 
-			//The third option is the inventory function, that is called to manage and change and view the player's inventory
 		case 3:
+			cout << user.getFame() << endl;
+			system("pause");
+			system("cls");
+			break;
+			//The fourth option is the inventory function, that is called to manage and change and view the player's inventory
+		case 4:
 			//clears screen and then calls manage inventory
 			break;
 
@@ -71,13 +73,39 @@ void Shop::interact(Player& user, Inventory& list)
 	}
 }
 
+string Shop::toString()
+{
+	//if the list is empty, it says so
+	if (size == 0) {
+		return "The inventory is currently empty, go buy some things to make it bigger.";
+	}
+	//makes a temporary iterator item that is starts at first
+	Item* iterator = first;
+	//makes a string called list that is empty but will have all the info later on
+	std::string list = "";
+
+	//while the list is not at the end
+	for (int pos = 0; pos < size; pos++) {
+			list += (pos + 1);
+			//adds a coma before adding all the information of the item
+			list += to_string(pos + 1) + ", " + iterator->toString() + '\n';
+			//sets iterator to the next iterator
+			iterator = iterator->getNextItem();
+			
+	}
+
+	//returns the string output
+	return list;
+	
+}
+
 //helper function for interact
-Item* Shop::buy()
+void Shop::buy(Player user)
 {
 	//welcomes the user into the shop
     cout << "Welcome to the " + type + " shop. What would you like to buy: "<<endl;
 	//prints out shop contents
-    cout << makeString();
+    cout << toString();
 	//starts the choice for what the user will pick at 0
     int choice = 0;
 
@@ -97,17 +125,26 @@ Item* Shop::buy()
 
 	//sets current index to choice, since that is the number that they have chosen
     setCurrent(choice);
-	//returns the item at that location
-	return getCurrent();
+
+	cout << "How many would you like to buy: ";
+	int amount;
+	cin >> amount;
+	if (getCurrent()->getCost() * amount <= user.getFame()) {
+		user.setFame(user.getFame() - getCurrent()->getCost() * amount);
+		getCurrent()->setAmount(getCurrent()->getAmount() + amount);
+	}
+	else {
+		cout << "You really are too poor. Leave my sight.";
+	}
 }
 
 //helper function for interaction
-double Shop::sell(Inventory& possessions)
+void Shop::sell(Inventory& possessions, Player user)
 {
 	//checks to see if inventroy is empty before selling things
 	if (possessions.getSize() == 0) {
 		cout << "Your inventory is currenlty empty. You have nothing to sell." << endl;
-		return 0.0;
+		return;
 	}
 	//displays all of user inventory's contents and welcomes them to shop
     cout << "Welcome to the " + type + " shop. What would you like to sell: "<<endl;
@@ -132,14 +169,16 @@ double Shop::sell(Inventory& possessions)
 	//sets current index of user's inventory to choice
     possessions.setCurrent(choice);
 
+	cout << "How many would you like to sell: ";
+	int amount;
+	cin >> amount;
+	if (getCurrent()->getAmount() >= amount) {
+		user.setFame(user.getFame() + getCurrent()->getCost() * amount);
+		getCurrent()->setAmount(getCurrent()->getAmount() - amount);
+	}
+
 	//tells the user that the thing he selected is being sold
 	cout << "Selling " << possessions.getCurrent()->getName()<<endl;
-	//gets the cost for the item indexed at choice
-    int cost = int(possessions.getCurrent()->getCost());
-	//removes current from the list of choices
-	possessions.deleteCurrent();
 	system("pause");
 	system("cls");
-	//returns the int value of the cost from this item
-    return cost;
 }

@@ -60,6 +60,11 @@ double Item::getCost()
 	return cost;
 }
 
+int Item::getAmount()
+{
+	return amount;
+}
+
 //takes input of next and returns nothing
 void Item::setNextItem(Item* next)
 {
@@ -130,12 +135,17 @@ void Item::setCost(double price)
 	cost = price;
 }
 
+void Item::setAmount(int numy)
+{
+	amount = numy;
+}
+
 //inputs nothing and returns the item information as a string
 string Item::toString()
 {
 	//output string has this format:
 	//$NAME is a $TYPE, and it increases your defense by $DEFENSEEFFECT% and your damage by $DAMAGEEFFECT%, restores $HEALTHEFFECT% amount of health, and permanently increases your fame by $FAMEEFFECT%.
-	string output = name + " is a " + type + ", and it increases your defense by " + to_string(defenseEffect) + "% and your damage by " + to_string(damageEffect) + ", restores " + to_string(healthEffect) + "% amount of health, and permanently increases your fame by  " + to_string(fameEffect) + "%.";
+	string output = name + " is a " + type + ", \n\tIncreases your defense by " + to_string(defenseEffect) + "% \n\tIncreases your damage by " + to_string(damageEffect) + ", \n\trestores " + to_string(healthEffect) + "% amount of health, \n\tpermanently increases your fame by  " + to_string(fameEffect) + "%." + "\n\tIt costs " + to_string(cost) + " amount of fame.";
 	//returns the output string
 	return output;
 }
@@ -145,7 +155,7 @@ string Item::inventoryString()
 
 	//output string has this format:
 	//$NAME is a $TYPE, and it increases your defense by $DEFENSEEFFECT% and your damage by $DAMAGEEFFECT%, restores $HEALTHEFFECT% amount of health, and permanently increases your fame by $FAMEEFFECT%.
-	string output = name + " is a " + type + ", and it increases your defense by " + to_string(defenseEffect) + "% and your damage by " + to_string(damageEffect) + ", restores " + to_string(healthEffect) + "% amount of health, and permanently increases your fame by  " + to_string(fameEffect) + "%." + "You own" + to_string(amount);
+	string output = name + " is a " + type + " \n\tIncreases your defense by " + to_string(defenseEffect) + "% \n\tIncreases your damage by " + to_string(damageEffect) + ", \n\trestores " + to_string(healthEffect) + "% amount of health \n\tpermanently increases your fame by  " + to_string(fameEffect) + "%." + "\n\tYou own" + to_string(amount);
 	//returns the output string
 	return output;
 }

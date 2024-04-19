@@ -128,7 +128,7 @@ Enemy Enemy::generateEnemy()
     //four different names will be implemented later on
     std::string names[] = { "FBI", "Assasinator", "Vice President", "Opposing Ruler"};
     //sets index to a random number 0-3
-    int index = rand() % 4;
+    int index = rand() % 5;
 
     //Declares an FBI agent
     if (names[index] == "FBI")

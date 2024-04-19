@@ -249,12 +249,14 @@ string Inventory::makeString()
 
 	//while the list is not at the end
 	for (int pos = 0; pos < size; pos++) {
-		//it adds the number of the iteration starting at 1
-		list += (pos + 1);
-		//adds a coma before adding all the information of the item
-		list += to_string(pos+1) + ", " + iterator->toString() + '\n';
-		//sets iterator to the next iterator
-		iterator = iterator->getNextItem();
+		if(iterator->getAmount()!=0){
+			//it adds the number of the iteration starting at 1
+			list += (pos + 1);
+			//adds a coma before adding all the information of the item
+			list += to_string(pos + 1) + ", " + iterator->toString() + " and you have " + to_string(iterator->getAmount()) + '\n';
+			//sets iterator to the next iterator
+			iterator = iterator->getNextItem();
+		}
 	}
 
 	//returns the string output
