@@ -61,6 +61,9 @@ void Shop::interact(Player& user, Inventory& list)
 			//The fourth option is the inventory function, that is called to manage and change and view the player's inventory
 		case 4:
 			//clears screen and then calls manage inventory
+			system("pause");
+			system("cls");
+
 			break;
 
 			//If something other than 1-6 was entered, it displays that the option was invalid and it returns to the main menu selection at the top
@@ -163,6 +166,7 @@ void Shop::sell(Inventory& possessions, Player user)
 		if (choice <= 0 || choice > size) {
 			//tells the user that they have not yet made a valid choice
 			cout << "Please choose a valid number: " << endl;
+			sell(possessions, user);
 		}
     }
 
@@ -175,10 +179,14 @@ void Shop::sell(Inventory& possessions, Player user)
 	if (getCurrent()->getAmount() >= amount) {
 		user.setFame(user.getFame() + getCurrent()->getCost() * amount);
 		getCurrent()->setAmount(getCurrent()->getAmount() - amount);
+
+		//tells the user that the thing he selected is being sold
+		cout << "Selling " << possessions.getCurrent()->getName() << endl;
+	}
+	else {
+		cout << "You do not own that item. Do not try to sell something that you do not own, you thief."<<endl;
 	}
 
-	//tells the user that the thing he selected is being sold
-	cout << "Selling " << possessions.getCurrent()->getName()<<endl;
 	system("pause");
 	system("cls");
 }

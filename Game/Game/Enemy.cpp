@@ -134,7 +134,7 @@ Enemy Enemy::generateEnemy()
     if (names[index] == "FBI")
     {
         //FBI Agent will have, health:25; attack:3; deffense:3; name: "FBI Agent"; fame:0; year:0
-        Enemy FBI(25, 3, 3, "FBI Agent", 0, 0);
+        Enemy FBI(25, 3, 3, "FBI Agent", 1, 0);
         FBI.addAttack(Attack(10.0, 1.0, "Spying on you!!!"));
         FBI.addAttack(Attack(7.5, 2.5, "Coup d'etat!!!"));
         FBI.addAttack(Attack(5.0, 7.5, "Hack!!!"));
@@ -145,7 +145,7 @@ Enemy Enemy::generateEnemy()
     else if (names[index] == "Assasinator")
     {
         //Assassinator will have, health:20; attack:2; deffense:2; name: "Assassinator"; fame:0; year:0
-        Enemy assassinator(20, 2, 2, "Assassinator", 0, 0);
+        Enemy assassinator(20, 2, 2, "Assassinator", 2, 0);
         assassinator.addAttack(Attack(10.0, 1.0, "Reveals that he works for the CIA."));
         assassinator.addAttack(Attack(7.5, 2.5, "Poison"));
         assassinator.addAttack(Attack(5.0, 7.5, "Death by cherries"));

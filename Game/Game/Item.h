@@ -100,6 +100,6 @@ public:
 	//returns a string with all of the item information
 	string toString();
 
-	string inventoryString();
+	string inventoryString(int count);
 };
 

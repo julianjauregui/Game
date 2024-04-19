@@ -238,10 +238,6 @@ Item Inventory::popFront() {
 //inputs nothing and outputs a string
 string Inventory::makeString()
 {
-	//if the list is empty, it says so
-	if (size == 0) {
-		return "The inventory is currently empty, go buy some things to make it bigger.";
-	}
 	//makes a temporary iterator item that is starts at first
 	Item* iterator = first;
 	//makes a string called list that is empty but will have all the info later on
@@ -249,14 +245,17 @@ string Inventory::makeString()
 
 	//while the list is not at the end
 	for (int pos = 0; pos < size; pos++) {
-		if(iterator->getAmount()!=0){
-			//it adds the number of the iteration starting at 1
-			list += (pos + 1);
-			//adds a coma before adding all the information of the item
-			list += to_string(pos + 1) + ", " + iterator->toString() + " and you have " + to_string(iterator->getAmount()) + '\n';
-			//sets iterator to the next iterator
-			iterator = iterator->getNextItem();
-		}
+		//it adds the number of the iteration starting at 1
+		list += (pos + 1);
+		//adds a coma before adding all the information of the item
+		list += iterator->inventoryString(pos);
+		//sets iterator to the next iterator
+		iterator = iterator->getNextItem();
+	}
+
+	//if the list is empty, it says so
+	if (list == "") {
+		return "The inventory is currently empty, go buy some things to make it bigger.";
 	}
 
 	//returns the string output
