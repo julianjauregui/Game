@@ -270,7 +270,46 @@ void manageInventory() {
 	//outputs the user's inventory
 	cout << "Welcome to your inventory. Please see what items you have: " << endl;
 	cout << inventory.makeString() << endl;
-	//pauses and waits for input before continuing to main menu
+
+	if (inventory.getSize() == 0) {
+		return;
+	}
+	//starts the choice for what the user will pick at 0
+	int choice = 0;
+
+	//while no valid choice has been made
+	while (choice <= 0 || choice > 9) {
+		//tells the user to pick what item they want
+		cout << "Enter the number next to the thing that you would like to use: ";
+		//user enters their choice
+		cin >> choice;
+
+		//if the user does not have a valid choice
+		if (choice <= 0 || choice > 9) {
+			//tells the user that they have not yet made a valid choice
+			cout << "Please choose a valid number: " << endl;
+		}
+	}
+
+	//sets current index of user's inventory to choice
+	inventory.setCurrent(choice + 1);
+
+	cout << "How many would you like to use: ";
+	int amount;
+	cin >> amount;
+	if (inventory.getCurrent()->getAmount() >= amount) {
+		player.setDamage(player.getDamage()+player.getDamage()*inventory.getCurrent()->getDamageEffect());
+		player.setHealth(player.getHealth() + player.getHealth() * inventory.getCurrent()->getHealthEffect());
+		player.setDefense(player.getDefense() + player.getDefense() * inventory.getCurrent()->getDefenseEffect());
+		player.setFame(player.getFame() + player.getFame() * inventory.getCurrent()->getFameEffect());
+		inventory.getCurrent()->setAmount(inventory.getCurrent()->getAmount() - amount);
+		//tells the user that the thing he selected is being sold
+		cout << "Using " << inventory.getCurrent()->getName() << endl;
+	}
+	else {
+		cout << "You do not own that item. Do not try to use something that you do not own, you scoundrel." << endl;
+	}
+
 	system("pause");
 	system("cls");
 }

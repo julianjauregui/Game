@@ -155,10 +155,9 @@ string Item::inventoryString(int count)
 {
 	string output = "";
 	if (amount > 0) {
-
 		//output string has this format:
 		//$NAME is a $TYPE, and it increases your defense by $DEFENSEEFFECT% and your damage by $DAMAGEEFFECT%, restores $HEALTHEFFECT% amount of health, and permanently increases your fame by $FAMEEFFECT%.
-		output = to_string(count) + ". " + name + " is a " + type + " \n\tIncreases your defense by " + to_string(defenseEffect) + "% \n\tIncreases your damage by " + to_string(damageEffect) + ", \n\trestores " + to_string(healthEffect) + "% amount of health \n\tpermanently increases your fame by  " + to_string(fameEffect) + "%." + "\n\tYou own" + to_string(amount) + "\n";
+		output += to_string(count) + ". " + name + " is a " + type + " \n\t\tIncreases your defense by " + to_string(defenseEffect) + "% \n\t\tIncreases your damage by " + to_string(damageEffect) + ", \n\t\trestores " + to_string(healthEffect) + "% amount of health \n\t\tpermanently increases your fame by  " + to_string(fameEffect) + "%." + "\n\t\tYou own " + to_string(amount) + "\n\n";
 	}
 	//returns the output string
 	return output;

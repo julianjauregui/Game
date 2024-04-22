@@ -61,7 +61,7 @@ Player Player::generatePlayer()
     //generates the player object with the amateur stats
     //initializes empty inventory to take in
     Inventory inventory;
-    Player player(100, 5, 5, names[index], 0.0, 1790); 
+    Player player(100, 5, 5, names[index], 10.0, 1790); 
 
     //initializes the characters attacks if he chooses to be joe biden
     if (names[index] == "Joe Biden")

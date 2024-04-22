@@ -156,27 +156,26 @@ void Shop::sell(Inventory& possessions, Player user)
     int choice = 0;
 
 	//while no valid choice has been made
-    while (choice <= 0 || choice > possessions.getSize()) {
+    while (choice <= 0 || choice > 9) {
 		//tells the user to pick what item they want
         cout << "Enter the number next to the thing that you would like to sell: ";
 		//user enters their choice
         cin >> choice;
 
 		//if the user does not have a valid choice
-		if (choice <= 0 || choice > size) {
+		if (choice <= 0 || choice > 9) {
 			//tells the user that they have not yet made a valid choice
 			cout << "Please choose a valid number: " << endl;
-			sell(possessions, user);
 		}
     }
 
 	//sets current index of user's inventory to choice
-    possessions.setCurrent(choice);
+    possessions.setCurrent(choice+1);
 
 	cout << "How many would you like to sell: ";
 	int amount;
 	cin >> amount;
-	if (getCurrent()->getAmount() >= amount) {
+	if (possessions.getCurrent()->getAmount() >= amount) {
 		user.setFame(user.getFame() + getCurrent()->getCost() * amount);
 		getCurrent()->setAmount(getCurrent()->getAmount() - amount);
 
