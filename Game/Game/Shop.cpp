@@ -26,7 +26,7 @@ void Shop::interact(Player& user, Inventory& list)
 	while (selection != 4) {
 
 		//Prints out the main menu choices, with each option being its own line
-		cout << "Welcome to the" + type + " shop.Pick what you would like to do: " << endl;
+		cout << "Welcome to " + type + ". Pick what you would like to do: " << endl;
 		cout << "1. Buy." << endl;
 		cout << "2. Sell." << endl;
 		cout << "3. View your current fame (money value)" << endl; 

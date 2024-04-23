@@ -18,7 +18,7 @@ public:
 	//inputs kind and makes shop of type inventory
 	Shop(string kind) : Inventory() {
 		//sets kind equal to type
-		kind = type;
+		type = kind;
 	}
 
 	//returns the type

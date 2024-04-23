@@ -9,6 +9,7 @@
 #include "Inventory.h"
 #include "Shop.h"
 #include "talker.h"
+#include "ShopNode.h"
 
 //THIS IS THE LIBRARY TO INCLUDE IN ORDER TO WIPE SCREEN (USE system("cls"); IN ORDER TO CLEAR THE SCREEN)
 #include <stdlib.h>
@@ -25,7 +26,7 @@ Inventory inventory;
 Player player(0, 0, 0, "", 0.0, 0);
 
 //initializes weaponsShop
-Shop weaponsShop("Weapon");
+ShopNode hawaii("Hawaii", "Welcome to Hawaii. A place where the only thing that beats the sand and the beach is the bombs from the Japanesse.", 1940, 0.0);
 //makes 3 different items
 //the stats are: health, damage, defense, fame, name, year, kind, and price 
 Item nuke(-0.75, 100., 0., 100., "Nuke", 1947, "Weapon", 1000.);
@@ -33,7 +34,7 @@ Item gun(0.0, 10.0, 0.3, 0.0, "Gun", 1905, "Weapon", 25.);
 Item pen(0., 5.0, 3.0, 10., "Pen", 1805, "Weapon", 1);
 
 //initializes armorShop
-Shop armorShop("Armor");
+ShopNode california("California", "Welcome to California boy. I hope that you're ready to strike it rich.", 1850, 0.3);
 //makes 3 different items
 //the stats are: health, damage, defense, fame, name, year, kind, and price 
 Item logs(0., 0.5, 10., 0., "Log", 1860, "Armor", 5.25);
@@ -41,7 +42,7 @@ Item counterEspionage(0, 0.0, 30.0, -20.0, "Counter Espionage", 1955, "Armor", 1
 Item teddyBear(.5, 2.0, 5.0, 0., "Teddy Bear", 1905, "Armor", 30);
 
 //makes potionShop
-Shop potionShop("Potion");
+ShopNode russia("Russia", "Welcome to Russia comrade. We, the people of Russia, the free men of the glorious kingdom.", 1860, .03);
 //makes 3 different items
 //the stats are: health, damage, defense, fame, name, year, kind, and price 
 Item damagePotion(0., 1., 0., 0., "Damage Potion", 0, "Potion", 2.);
@@ -160,20 +161,20 @@ void startup()
 	player = Player::generatePlayer();
 
 	//puts all 3 items into the potionShop
-	weaponsShop.pushback(nuke);
-	weaponsShop.pushback(gun);
-	weaponsShop.pushback(pen);
+	hawaii.pushback(nuke);
+	hawaii.pushback(gun);
+	hawaii.pushback(pen);
 
 	//puts all 3 items into the potionShop
-	armorShop.pushback(logs);
-	armorShop.pushback(counterEspionage);
-	armorShop.pushback(teddyBear);
+	california.pushback(logs);
+	california.pushback(counterEspionage);
+	california.pushback(teddyBear);
 
 
 	//puts all 3 items into the potionShop
-	potionShop.pushback(damagePotion);
-	potionShop.pushback(defensePotion);
-	potionShop.pushback(healthPotion);
+	russia.pushback(damagePotion);
+	russia.pushback(defensePotion);
+	russia.pushback(healthPotion);
 
 	//instantiates the 2 talking NPCs
 	talkingNPCs = talker::initialize();
@@ -346,15 +347,15 @@ void enterShop() {
 	cin >> choice;
 	if (choice == 1) {
 		//player interacts with weaponsShop
-		weaponsShop.interact(player, inventory);
+		hawaii.interact(player, inventory);
 	}
 	else if (choice == 2) {
 		//player interacts with armorShop
-		armorShop.interact(player, inventory);
+		california.interact(player, inventory);
 	}
 	else if (choice == 3) {
 		//player interacts with potionShop
-		potionShop.interact(player, inventory);
+		russia.interact(player, inventory);
 	}
 }
 
