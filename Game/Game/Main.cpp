@@ -214,6 +214,17 @@ void enterBattle() {
 		//generates the enemy attack first for no confusion on the defense multiplier stat
 		Attack enemyAttack = enemy.chooseAttack();
 
+		int runner;
+		cout << "Press 1 to fight or any other number to run away: " << endl;
+		cin >> runner;
+		if (runner != 1) {
+			cout << "You do not fight the battle. Quitter." << endl;
+
+			system("pause");
+			system("cls");
+			return;
+		}
+
 		// Player's turn
 		//player chooses his attack
 		Attack playerAttack = player.chooseAttack();
@@ -239,24 +250,34 @@ void enterBattle() {
 			break;
 		}
 
-		//Enemy's turn
-		//attack has been generated before, so it only prints out the attack name
-		cout << enemy.getName() << " used " << enemyAttack.getName() << "!" << endl;
-		//sets player health equal to their current health minus the damage multiplier on the enemy times their damage stat minus the defense stat of the player times the defense multiplier of their attack
-		if (int(player.getHealth() - (enemyAttack.getDamageMultiplier() * enemy.getDamage() - player.getDefense() * playerAttack.getDefenseMultiplier())) < player.getHealth()) {
-			player.setHealth(int(player.getHealth() - (enemyAttack.getDamageMultiplier() * enemy.getDamage() - player.getDefense() * playerAttack.getDefenseMultiplier())));
+		// Generates a random seed
+		srand(time(NULL));
+		//Sets choice to a random index that is in the attack size
+		int choice = rand() % 5;
+		if (choice == 1) {
+			cout << "The enemy ran away." << endl;
+			enemy.setHealth(0);
 		}
-		//prints out the current player health
-		cout << player.getName() << " health: " << player.getHealth() << endl;
-		//waits for user input before clearing screen
-		system("pause");
-		system("cls");
+		else {
+			//Enemy's turn
+			//attack has been generated before, so it only prints out the attack name
+			cout << enemy.getName() << " used " << enemyAttack.getName() << "!" << endl;
+			//sets player health equal to their current health minus the damage multiplier on the enemy times their damage stat minus the defense stat of the player times the defense multiplier of their attack
+			if (int(player.getHealth() - (enemyAttack.getDamageMultiplier() * enemy.getDamage() - player.getDefense() * playerAttack.getDefenseMultiplier())) < player.getHealth()) {
+				player.setHealth(int(player.getHealth() - (enemyAttack.getDamageMultiplier() * enemy.getDamage() - player.getDefense() * playerAttack.getDefenseMultiplier())));
+			}
+			//prints out the current player health
+			cout << player.getName() << " health: " << player.getHealth() << endl;
+			//waits for user input before clearing screen
+			system("pause");
+			system("cls");
 
-		//if player dies, tells the player that he died
-		if (player.getHealth() <= 0) {
-			cout << "Game over! " << enemy.getName() << " defeated you." << endl;
-			//breaks out of the while loop attack sequence
-			break;
+			//if player dies, tells the player that he died
+			if (player.getHealth() <= 0) {
+				cout << "Game over! " << enemy.getName() << " defeated you." << endl;
+				//breaks out of the while loop attack sequence
+				break;
+			}
 		}
 	}
 	//tells the user that the battle is over
