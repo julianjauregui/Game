@@ -29,3 +29,31 @@ void ShopNode::setFightChance(double chance)
 {
     fightChance = chance;
 }
+
+YearNode* ShopNode::getCurrent()
+{
+    return current;
+}
+
+void ShopNode::setCurrent(YearNode* times)
+{
+    current = times;
+}
+
+void ShopNode::move()
+{
+    cout << description << endl;
+    cout << "What would you like to do: " << endl;
+    cout << "1. Buy things" << endl;
+    cout << "(press any other number) Return to the White House: " << endl;
+    int selection;
+    cin >> selection;
+    if (selection == 1) {
+        interact(user, inventory);
+        move();
+    }
+    else {
+        current->move();
+    }
+    
+}

@@ -359,7 +359,7 @@ void enterShop() {
 	}
 }
 
-//This chat function is still in production, so it says so
+
 void chat() {
 	cout << "Who would you like to speak to today: " << endl;
 	cout << "1.Begining dude" << endl;
