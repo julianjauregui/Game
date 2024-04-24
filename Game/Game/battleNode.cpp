@@ -5,6 +5,7 @@ void battleNode::interact()
 	cout << description << endl;
 	cout << "What would you like to do: " << endl;
 	cout << "1. Leave" << endl;
+	cout << "2.Flee to " << shop->getType() << endl;
 	cout << "(anything else) stay and die: " << endl;
 	int selection;
 	cin >> selection;
@@ -12,6 +13,11 @@ void battleNode::interact()
 		system("pause");
 		system("cls");
 		year->move();
+	}
+	else if (selection == 2) {
+		system("pause");
+		system("cls");
+		shop->move();
 	}
 	else {
 		cout<<"You chose to die"<<endl;

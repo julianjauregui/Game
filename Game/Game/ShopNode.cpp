@@ -45,6 +45,7 @@ void ShopNode::move()
     cout << description << endl;
     cout << "What would you like to do: " << endl;
     cout << "1. Buy things" << endl;
+    cout << "2. Go to " << battle->getName();
     cout << "(press any other number) Return to the White House: " << endl;
     int selection;
     cin >> selection;
@@ -52,8 +53,11 @@ void ShopNode::move()
         interact(user, inventory);
         move();
     }
+    else if (selection == 2) {
+        battle->interact();
+        current->move();
+    }
     else {
         current->move();
     }
-    
 }
