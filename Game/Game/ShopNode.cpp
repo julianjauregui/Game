@@ -54,7 +54,8 @@ void ShopNode::move()
 
     cout << "What would you like to do: " << endl;
     cout << "1. Buy things" << endl;
-    cout << "2. Go to " << battle->getName();
+    cout << "2. Go to " << battle->getName()<<endl; 
+    cout << "3. Go the the menu" << endl;
     cout << "(press any other number) Return to the White House: " << endl;
     int selection;
     cin >> selection;
@@ -66,6 +67,14 @@ void ShopNode::move()
     else if (selection == 2) {
         battle->interact();
         return;
+    }
+    else if (selection == 3) {
+        system("pause");
+        system("cls");
+        if (current->menu()) {
+            return;
+        }
+        move();
     }
     else {
         current->move();

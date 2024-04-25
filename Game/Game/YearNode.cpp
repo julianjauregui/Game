@@ -1,4 +1,6 @@
 #include "YearNode.h"
+#include <iostream>
+using namespace std;
 
 YearNode* YearNode::getPrev()
 {
@@ -83,6 +85,7 @@ void YearNode::move()
     string choice;
     if(boss->getHealth()<=0){
         cout << "You have already beaten this year and prove that you are top dawg. Do you wish to advance to the next year (enter 'yes' to advance):" << endl;
+        cout << "Press anything else to stay in the year " << year << endl;
         cin >> choice;
         if (choice == "yes") {
             cout << "Time travelling..." << endl;
@@ -92,25 +95,30 @@ void YearNode::move()
             return;
         }
     }
-    if (prev->getBoss()->getHealth() <= 0) {
-        string choice;
-        cout << "You have already beaten last year and proved that you were top dawg. Do you wish to return to the previous year (enter 'yes' to time travel):" << endl;
-        cin >> choice;
-        if (choice == "yes") {
-            cout << "Time travelling..." << endl;
-            system("pause");
-            system("cls");
-            prev->move();
-            return;
+    if (prev != nullptr) {
+
+        if (prev->getBoss()->getHealth() <= 0) {
+            string choice;
+            cout << "You have already beaten last year and proved that you were top dawg. Do you wish to return to the previous year (enter 'yes' to time travel):" << endl;
+            cout << "Enter anything else to progress to the year " << year << endl;
+            cin >> choice;
+            if (choice == "yes") {
+                cout << "Time travelling..." << endl;
+                system("pause");
+                system("cls");
+                prev->move();
+                return;
+            }
         }
     }
     cout << "Welcome to the White House. It is currently the year " << year << ". What would you like to do: "<<endl;
     if(boss != nullptr){
-        cout << "1. Fight " << boss->getName();
+        cout << "1. Fight " << boss->getName()<<endl;
     }
     if (shop!=nullptr) {
         cout << "2. Go to " << shop->getType()<<endl;
         cout << "3. Go to " << battle->getName() << endl;
+        cout << "4. Go the the menu" << endl;
         cin >> selection;
         switch (selection) {
         case 1: {
@@ -137,6 +145,16 @@ void YearNode::move()
             return;
             break;
         }
+        case 4: {
+            system("pause");
+            system("cls");
+            if (menu()) {
+                return;
+            }
+            move();
+            return;
+            break;
+        }
         default:
             cout << "You choose something invalid. Try again" << endl;
             system("pause");
@@ -146,7 +164,7 @@ void YearNode::move()
         }
     }
     else {
-        cout << "2. Talk to " << chatter->getName();
+        cout << "2. Talk to " << chatter->getName()<<endl;
         cin >> selection;
         switch (selection) {
         case 1: {
@@ -162,6 +180,7 @@ void YearNode::move()
             system("pause");
             system("cls");
             chatter->talk(0);
+            move();
             break;
         }
         default:
@@ -233,6 +252,9 @@ void YearNode::fightBoss()
 			//tells the user that the enemy has been defeated
 			cout << "Congratulations! You defeated the " << boss->getName() << "!" << endl;
 			player->setFame(player->getFame() + boss->getFame());
+
+            player->setDamage(player->getDamage() + boss->getDamage());
+            player->setDefense(player->getDefense() + boss->getDefense());
 			//breaks out of the attack sequence while loop
 			break;
 		}
@@ -266,7 +288,7 @@ void YearNode::fightBoss()
     move();
 }
 
-void YearNode::setValues(YearNode* prevYear, YearNode* nextYear, ShopNode* shopper, int anno, Enemy* pres, talker* chatMan, battleNode* fight, Player* user)
+void YearNode::setValues(YearNode* prevYear, YearNode* nextYear, ShopNode* shopper, int anno, Enemy* pres, talker* chatMan, battleNode* fight, Player* user, Inventory* cache)
 {
     prev = prevYear;
     next = nextYear;
@@ -276,4 +298,106 @@ void YearNode::setValues(YearNode* prevYear, YearNode* nextYear, ShopNode* shopp
     chatter = chatMan;
     battle = fight;
     player = user;
+    inventory = cache;
+}
+
+void YearNode::manageInventory()
+{
+    //outputs the user's inventory
+    cout << "Welcome to your inventory. Please see what items you have: " << endl;
+    cout << inventory->makeString() << endl;
+
+    if (inventory->getSize() == 0) {
+        return;
+    }
+    //starts the choice for what the user will pick at 0
+    int choice = 0;
+
+    //while no valid choice has been made
+    while (choice <= 0 || choice > 9) {
+        //tells the user to pick what item they want
+        cout << "Enter the number next to the thing that you would like to use: ";
+        //user enters their choice
+        cin >> choice;
+
+        //if the user does not have a valid choice
+        if (choice <= 0 || choice > 9) {
+            //tells the user that they have not yet made a valid choice
+            cout << "Please choose a valid number: " << endl;
+        }
+    }
+
+    //sets current index of user's inventory to choice
+    inventory->setCurrent(choice + 1);
+
+    cout << "How many would you like to use: ";
+    int amount;
+    cin >> amount;
+    if (inventory->getCurrent()->getAmount() >= amount) {
+        player->setDamage(player->getDamage() + player->getDamage() * inventory->getCurrent()->getDamageEffect());
+        player->setHealth(player->getHealth() + player->getHealth() * inventory->getCurrent()->getHealthEffect());
+        player->setDefense(player->getDefense() + player->getDefense() * inventory->getCurrent()->getDefenseEffect());
+        player->setFame(player->getFame() + player->getFame() * inventory->getCurrent()->getFameEffect());
+        inventory->getCurrent()->setAmount(inventory->getCurrent()->getAmount() - amount);
+        //tells the user that the thing he selected is being sold
+        cout << "Using " << inventory->getCurrent()->getName() << endl;
+    }
+    else {
+        cout << "You do not own that item. Do not try to use something that you do not own, you scoundrel." << endl;
+    }
+
+    system("pause");
+    system("cls");
+}
+
+bool YearNode::menu(){
+    //Selection is the number of choice that the user does, from 1 to 6 being accounted for; it set equal to zero before any choice has been made
+    int selection = 0;
+
+    //repeats the menu until the player chooses 6, which makes the player leave the game
+    while (selection < 1 || selection > 3) {
+
+        //Prints out the main menu choices, with each option being its own line
+        cout << "Welcome to the main Menu. Pick what you would like to do: " << endl;
+        cout << "1. Return to Game." << endl;
+        cout << "2. Check Inventory." << endl;
+        cout << "3. Quit Game." << endl;
+        cout << "Pick your selection: ";
+        //Enters the selection from the user of what function they want to call
+        cin >> selection;
+
+        //Switch case with the user-inputted selection as the main variable being checked
+        switch (selection) {
+
+            //The first case is the overworld function, which returns to the overworld
+        case 1:
+            //clears screen and then calls overworld function
+            system("cls");
+            return false;
+            break;
+
+            //The second option is the enter battle function, which is called to enter and fight a battle
+        case 2:
+            //clears screen and then calls enter battle function
+            system("cls");
+            manageInventory();
+            return false;
+            break;
+
+            //The third option is the inventory function, that is called to manage and change and view the player's inventory
+        case 3:
+            //clears screen and then calls manage inventory
+            system("cls");
+            cout << "You quit the game. Goodbye fellow American.";
+            return true;
+            break;
+
+            //If something other than 1-6 was entered, it displays that the option was invalid and it returns to the main menu selection at the top
+        default:
+            //doesn't clear screen because the user should be able to see that his input was incorrect so as to not repeat it
+            cout << "The selection you chose was invalid. Please choose again." << endl;
+
+        }
+    }
+
 }

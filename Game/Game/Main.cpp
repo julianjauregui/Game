@@ -33,6 +33,21 @@ YearNode nineteenForty;
 YearNode eighteenFifty;
 YearNode twentyThirty;
 
+//George washington will be the first ruler in the game, so he will have the weakest stats
+//Health = 100; attack = 5; deffense = 5; name = "George Washington"; fame = 5; year = 1795
+Enemy georgeWashington(100, 5, 5, "George Washington", 5, 1795);
+
+
+Enemy abrahamLincoln(500, 25, 25, "Abraham Lincoln", 25, 1860);
+
+
+Enemy FDR(800, 40, 40, "FDR", 40, 1940);
+
+
+//Millard Filmore will be the last ruler in the game, so he will have the strongest stats
+//Health = 1100; attack = 60; deffense = 60; name = "Millard Filmore"; fame = 60; year = 1850
+Enemy millardFilmore(1100, 60, 60, "Millard Filmore", 60, 1850);
+
 //initializes weaponsShop
 ShopNode hawaii("Hawaii");
 //makes 3 different items
@@ -94,7 +109,7 @@ int main() {
 	//Selection is the number of choice that the user does, from 1 to 6 being accounted for; it set equal to zero before any choice has been made
 	int selection = 0;
 
-	//repeats the menu until the player chooses 6, which makes the player leave the game
+	/*//repeats the menu until the player chooses 6, which makes the player leave the game
 	while (selection != 6) {
 		
 		//Prints out the main menu choices, with each option being its own line
@@ -161,19 +176,13 @@ int main() {
 
 		}
 
-	}
+	}*/
 	return 0;
 }
 
 //Any startup function will be called here
 void startup()
 {
-	//generates all of the presidents from the enemies and sets enemyPresidents equal to it
-	enemyPresidents = Enemy::makeBosses();
-	seventeenNinety.setBoss(&enemyPresidents[0]);
-	eighteenFifty.setBoss(&enemyPresidents[10]);
-	eighteenSixty.setBoss(&enemyPresidents[4]);
-	nineteenForty.setBoss(&enemyPresidents[7]);
 	//generates the player with his desired president choice
 	player = Player::generatePlayer();
 
@@ -187,6 +196,12 @@ void startup()
 	california.pushback(counterEspionage);
 	california.pushback(teddyBear);
 
+	//FDR will be the eigth ruler in the game, so he will have the eigth weakest stats
+	//Health = 800; attack = 45; deffense = 45; name = "FDR"; fame = 45; year = 1940
+	FDR.addAttack(Attack(10.0, 1.0, "I will be your president.....forever!!!!!!!!"));
+	FDR.addAttack(Attack(7.5, 2.5, "You literally can't get rid of me......"));
+	FDR.addAttack(Attack(5.0, 7.5, "I'll throw you into WWII and blame the whole thing on you!"));
+
 
 	//puts all 3 items into the potionShop
 	russia.pushback(damagePotion);
@@ -199,6 +214,27 @@ void startup()
 	twentyThirty.setChatter(&talkingNPCs[1]);
 
 
+
+	//George washington will be the first ruler in the game, so he will have the weakest stats
+	//Health = 100; attack = 5; deffense = 5; name = "George Washington"; fame = 5; year = 1795
+	georgeWashington.addAttack(Attack(10.0, 1.0, "LEADIN MURICA!!!"));
+	georgeWashington.addAttack(Attack(7.5, 2.5, "marry a rich widow!!!"));
+	georgeWashington.addAttack(Attack(5.0, 7.5, "bite with ivory teeth!!!"));
+
+
+	//Abraham Lincoln will be the fifth ruler in the game, so he will have the fifth weakest stats
+	//Health = 500; attack = 25; deffense = 25; name = "Abraham Lincoln"; fame = 25; year = 1860
+	abrahamLincoln.addAttack(Attack(10.0, 1.0, "Freed your slaves!!!"));
+	abrahamLincoln.addAttack(Attack(7.5, 2.5, "delivered a lethal adress!!"));
+	abrahamLincoln.addAttack(Attack(5.0, 7.5, "taller than you!!!"));
+
+
+	//Millard Filmore will be the last ruler in the game, so he will have the strongest stats
+	//Health = 1100; attack = 60; deffense = 60; name = "Millard Filmore"; fame = 60; year = 1850
+	millardFilmore.addAttack(Attack(10.0, 1.0, "the worst campaign slogan ever : No fame, no gain, that's the Millard Fillmore way"));
+	millardFilmore.addAttack(Attack(7.5, 2.5, "mid looks"));
+	millardFilmore.addAttack(Attack(5.0, 7.5, "the worst name job ever"));
+
 	inventory.pushback(nuke);
 	inventory.pushback(gun);
 	inventory.pushback(pen);
@@ -209,11 +245,11 @@ void startup()
 	inventory.pushback(defensePotion);
 	inventory.pushback(healthPotion);
 
-	seventeenNinety.setValues(nullptr, &eighteenSixty, nullptr, 1790, &enemyPresidents[0], &talkingNPCs[0], nullptr, &player);
-	eighteenSixty.setValues(&seventeenNinety, &nineteenForty, &russia, 1860, &enemyPresidents[4], nullptr, &virginia, &player);
-	nineteenForty.setValues(&eighteenSixty, &eighteenFifty, &hawaii, 1940, &enemyPresidents[7], nullptr, &germany, &player);
-	eighteenFifty.setValues(&nineteenForty, &twentyThirty, &california, 1850, &enemyPresidents[10], nullptr, &mexico, &player);
-	seventeenNinety.setValues(&eighteenFifty, nullptr, nullptr, 2030, nullptr, &talkingNPCs[1], nullptr, &player);
+	seventeenNinety.setValues(nullptr, &eighteenSixty, nullptr, 1790, &georgeWashington, &talkingNPCs[0], nullptr, &player, &inventory);
+	eighteenSixty.setValues(&seventeenNinety, &nineteenForty, &russia, 1860, &abrahamLincoln, nullptr, &virginia, &player, &inventory);
+	nineteenForty.setValues(&eighteenSixty, &eighteenFifty, &hawaii, 1940, &FDR, nullptr, &germany, &player, &inventory);
+	eighteenFifty.setValues(&nineteenForty, &twentyThirty, &california, 1850, &millardFilmore, nullptr, &mexico, &player, &inventory);
+	twentyThirty.setValues(&eighteenFifty, nullptr, nullptr, 2030, nullptr, &talkingNPCs[1], nullptr, &player, &inventory);
 
 	hawaii.setValues("Hawaii", "Welcome to Hawaii. A place where the only thing that beats the sand and the beach is the bombs from the Japanesse.", 1940, 10, &nineteenForty, &player, &inventory, &germany);
 	california.setValues("California", "Welcome to California boy. I hope that you're ready to strike it rich.", 1850, 3, &eighteenFifty, &player, &inventory, &mexico);
@@ -228,7 +264,7 @@ void startup()
 void returnToOverworld() {
 	cout << "Sorry, it appears that the overworld is still in development." << endl;
 }
-
+/*
 //This enterBattle function, the arena whwere battles are fought
 void enterBattle() {
 	if (player.getHealth() <= 0) {
@@ -413,3 +449,4 @@ void chat() {
 void quitGame() {
 	cout << "Leaving the menu selection, but the game has not yet been set up." << endl;
 }
+*/

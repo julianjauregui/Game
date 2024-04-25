@@ -6,6 +6,7 @@ void battleNode::interact()
 	cout << "What would you like to do: " << endl;
 	cout << "1. Leave" << endl;
 	cout << "2.Flee to " << shop->getType() << endl;
+	cout << "3. Go the the menu" << endl;
 	cout << "(anything else) stay and die: " << endl;
 	int selection;
 	cin >> selection;
@@ -20,6 +21,14 @@ void battleNode::interact()
 		system("cls");
 		shop->move();
 		return;
+	}
+	else if (selection == 3) {
+		system("pause");
+		system("cls");
+		if (year->menu()) {
+			return;
+		}
+		interact();
 	}
 	else {
 		cout<<"You chose to die"<<endl;
