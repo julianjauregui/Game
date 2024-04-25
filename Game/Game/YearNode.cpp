@@ -255,6 +255,8 @@ void YearNode::fightBoss()
 
             player->setDamage(player->getDamage() + boss->getDamage());
             player->setDefense(player->getDefense() + boss->getDefense());
+            system("pause");
+            system("cls");
 			//breaks out of the attack sequence while loop
 			break;
 		}
@@ -276,6 +278,9 @@ void YearNode::fightBoss()
 			//if player dies, tells the player that he died
 			if (player->getHealth() <= 0) {
 				cout << "Game over! " << boss->getName() << " defeated you." << endl;
+                cout << "However, you may return to the current year with full health. Since I am a merciful man." << endl;
+                player->setHealth(30);
+                move();
 				//breaks out of the while loop attack sequence
 				break;
 			}
@@ -306,8 +311,15 @@ void YearNode::manageInventory()
     //outputs the user's inventory
     cout << "Welcome to your inventory. Please see what items you have: " << endl;
     cout << inventory->makeString() << endl;
+    cout << "1. Leave inventory." << endl;
+    cout << "2. Use an item." << endl;
+    int selection;
+    cin >> selection;
+    if (selection == 1) {
+        return;
+    }
 
-    if (inventory->getSize() == 0) {
+    if (inventory->makeString() == "") {
         return;
     }
     //starts the choice for what the user will pick at 0

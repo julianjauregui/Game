@@ -32,19 +32,24 @@ void battleNode::interact()
 	}
 	else {
 		cout<<"You chose to die"<<endl;
-		enterBattle();
+		if (enterBattle()) {
+			cout << "You died. rest in peace my homie" << endl;
+			system("pause");
+			system("cls");
+			return;
+		}
 		interact();
 		return;
 	}
 }
 
 //This enterBattle function, the arena whwere battles are fought
-void battleNode::enterBattle() {
+bool battleNode::enterBattle() {
 	if (player->getHealth() <= 0) {
 		cout << "You are already dead. You did not live to fight another fight." << endl;
 		system("pause");
 		system("cls");
-		return;
+		return true;
 	}
 	//initializes the random enemy that the user will be fighting
 	Enemy enemy = Enemy::generateEnemy();
@@ -66,7 +71,7 @@ void battleNode::enterBattle() {
 
 			system("pause");
 			system("cls");
-			return;
+			return false;
 		}
 
 		// Player's turn
@@ -120,6 +125,7 @@ void battleNode::enterBattle() {
 			if (player->getHealth() <= 0) {
 				cout << "Game over! " << enemy.getName() << " defeated you." << endl;
 				//breaks out of the while loop attack sequence
+				return true;
 				break;
 			}
 		}
@@ -128,6 +134,7 @@ void battleNode::enterBattle() {
 	cout << "The Battle has been fought. Go in peace.";
 	system("pause");
 	system("cls");
+	return false;
 }
 
 string battleNode::getName()

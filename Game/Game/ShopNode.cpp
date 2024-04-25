@@ -49,7 +49,11 @@ void ShopNode::move()
     //Sets choice to a random index that is in the attack size
     int choice = rand() % fightChance;
     if (choice == 1) {
-        battle->enterBattle();
+        if (battle->enterBattle()) {
+            cout << "You died. Rest in peace my homie." << endl;
+            system("pause");
+            system("cls");
+        }
     }
 
     cout << "What would you like to do: " << endl;

@@ -17,7 +17,7 @@ public:
 	battleNode() {
 	}
 	void interact();
-	void enterBattle();
+	bool enterBattle();
 	string getName();
 	void setYear(YearNode* anno);
 	void setShop(ShopNode* tienda);

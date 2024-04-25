@@ -253,7 +253,7 @@ void startup()
 
 	hawaii.setValues("Hawaii", "Welcome to Hawaii. A place where the only thing that beats the sand and the beach is the bombs from the Japanesse.", 1940, 10, &nineteenForty, &player, &inventory, &germany);
 	california.setValues("California", "Welcome to California boy. I hope that you're ready to strike it rich.", 1850, 3, &eighteenFifty, &player, &inventory, &mexico);
-	russia.setValues("Russia", "Welcome to Russia comrade. We, the people of Russia, the free men of the glorious kingdom.", 1860, 7, &eighteenSixty, &player, &inventory, &virginia);
+	russia.setValues("Russia", "Welcome to Russia comrade. We, the people of Russia, the free men of the glorious kingdom weclome you to our land.", 1860, 7, &eighteenSixty, &player, &inventory, &virginia);
 
 	virginia.setValues(&eighteenSixty, "Welcome to the glorious country of the Confederate States of America. We do not take kindly to the Union sympathizers.", "Virginia", &player, &russia);
 	germany.setValues(&nineteenForty, "Welcome to the land of the chosen race. The land of the glorious Kaiser. If you do not agree with our ways, it is time for you to die.", "Nazi Germany", &player, &hawaii);
