@@ -60,7 +60,7 @@ void YearNode::setYear(int anno)
     year = anno;
 }
 
-void YearNode::getBoss(Enemy* pres)
+void YearNode::setBoss(Enemy* pres)
 {
     boss = pres;
 }
@@ -72,9 +72,42 @@ void YearNode::setChatter(talker* chatMan)
 
 void YearNode::move()
 {
+    if (boss==nullptr) {
+        chatter->talk(0);
+        cout << "You have beaten the game. You may leave in peace." << endl;
+        system("pause");
+        system("cls");
+        return;
+    }
     int selection;
+    string choice;
+    if(boss->getHealth()<=0){
+        cout << "You have already beaten this year and prove that you are top dawg. Do you wish to advance to the next year (enter 'yes' to advance):" << endl;
+        cin >> choice;
+        if (choice == "yes") {
+            cout << "Time travelling..." << endl;
+            system("pause");
+            system("cls");
+            next->move();
+            return;
+        }
+    }
+    if (prev->getBoss()->getHealth() <= 0) {
+        string choice;
+        cout << "You have already beaten last year and proved that you were top dawg. Do you wish to return to the previous year (enter 'yes' to time travel):" << endl;
+        cin >> choice;
+        if (choice == "yes") {
+            cout << "Time travelling..." << endl;
+            system("pause");
+            system("cls");
+            prev->move();
+            return;
+        }
+    }
     cout << "Welcome to the White House. It is currently the year " << year << ". What would you like to do: "<<endl;
-    cout << "1. Fight " << boss->getName();
+    if(boss != nullptr){
+        cout << "1. Fight " << boss->getName();
+    }
     if (shop!=nullptr) {
         cout << "2. Go to " << shop->getType()<<endl;
         cout << "3. Go to " << battle->getName() << endl;
@@ -85,6 +118,7 @@ void YearNode::move()
             system("pause");
             system("cls");
             fightBoss();
+            return;
             break;
         }
         case 2: {
@@ -92,6 +126,7 @@ void YearNode::move()
             system("pause");
             system("cls");
             shop->move();
+            return;
             break;
         }
         case 3: {
@@ -99,6 +134,7 @@ void YearNode::move()
             system("pause");
             system("cls");
             battle->interact();
+            return;
             break;
         }
         default:
@@ -106,6 +142,7 @@ void YearNode::move()
             system("pause");
             system("cls");
             move();
+            return;
         }
     }
     else {
@@ -117,6 +154,7 @@ void YearNode::move()
             system("pause");
             system("cls");
             fightBoss();
+            return;
             break;
         }
         case 2: {
@@ -131,6 +169,7 @@ void YearNode::move()
             system("pause");
             system("cls");
             move();
+            return;
         }
         
     }
@@ -225,4 +264,16 @@ void YearNode::fightBoss()
 	system("pause");
 	system("cls");
     move();
+}
+
+void YearNode::setValues(YearNode* prevYear, YearNode* nextYear, ShopNode* shopper, int anno, Enemy* pres, talker* chatMan, battleNode* fight, Player* user)
+{
+    prev = prevYear;
+    next = nextYear;
+    shop = shopper;
+    year = anno;
+    boss = pres;
+    chatter = chatMan;
+    battle = fight;
+    player = user;
 }

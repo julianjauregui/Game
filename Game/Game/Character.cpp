@@ -1,8 +1,3 @@
-
-
-
-
-
 //Imlementation of the Character class, from the Character.h file
 #include "Character.h"
 

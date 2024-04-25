@@ -4,6 +4,8 @@
 #include "talker.h"
 #include "battleNode.h"
 #include "Player.h"
+class ShopNode;
+class battleNode;
 class YearNode
 {
 protected:
@@ -16,15 +18,7 @@ protected:
 	talker* chatter;
 	Player* player;
 public:
-	YearNode(YearNode* prevYear, YearNode* nextYear, ShopNode* shopper, int anno, Enemy* pres, talker* chatMan, battleNode* fight, Player* user) {
-		prev = prevYear;
-		next = nextYear;
-		shop = shopper;
-		year = anno;
-		boss = pres;
-		chatter = chatMan;
-		battle = fight;
-		player = user;
+	YearNode(){
 	}
 
 
@@ -42,11 +36,12 @@ public:
 	void setShop(ShopNode* shoppers);
 	void setBattle(battleNode* fight);
 	void setYear(int anno);
-	void getBoss(Enemy* pres);
+	void setBoss(Enemy* pres);
 	void setChatter(talker* chatMan);
 
 	void move();
 	void fightBoss();
+	void setValues(YearNode* prevYear, YearNode* nextYear, ShopNode* shopper, int anno, Enemy* pres, talker* chatMan, battleNode* fight, Player* user);
 
 };
 

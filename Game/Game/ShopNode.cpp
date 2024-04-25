@@ -20,7 +20,7 @@ void ShopNode::setYear(int anno)
     year = anno;
 }
 
-double ShopNode::getFightChance()
+int ShopNode::getFightChance()
 {
     return fightChance;
 }
@@ -43,6 +43,15 @@ void ShopNode::setCurrent(YearNode* times)
 void ShopNode::move()
 {
     cout << description << endl;
+
+    // Generates a random seed
+    srand(time(NULL));
+    //Sets choice to a random index that is in the attack size
+    int choice = rand() % fightChance;
+    if (choice == 1) {
+        battle->enterBattle();
+    }
+
     cout << "What would you like to do: " << endl;
     cout << "1. Buy things" << endl;
     cout << "2. Go to " << battle->getName();
@@ -50,14 +59,27 @@ void ShopNode::move()
     int selection;
     cin >> selection;
     if (selection == 1) {
-        interact(user, inventory);
+        interact(*user,*inventory);
         move();
+        return;
     }
     else if (selection == 2) {
         battle->interact();
-        current->move();
+        return;
     }
     else {
         current->move();
+        return;
     }
+}
+
+void ShopNode::setValues(string kind, string phrase, int anno, int chance, YearNode* times, Player* person, Inventory* collections, battleNode* fight)
+{
+    description = phrase;
+    year = anno;
+    fightChance = chance;
+    current = times;
+    user = person;
+    inventory = collections;
+    battle = fight;
 }

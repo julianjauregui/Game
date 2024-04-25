@@ -10,6 +10,8 @@
 #include "Shop.h"
 #include "talker.h"
 #include "ShopNode.h"
+#include "YearNode.h"
+#include "battleNode.h"
 
 //THIS IS THE LIBRARY TO INCLUDE IN ORDER TO WIPE SCREEN (USE system("cls"); IN ORDER TO CLEAR THE SCREEN)
 #include <stdlib.h>
@@ -25,8 +27,14 @@ Inventory inventory;
 //this is the player
 Player player(0, 0, 0, "", 0.0, 0);
 
+YearNode seventeenNinety;
+YearNode eighteenSixty;
+YearNode nineteenForty;
+YearNode eighteenFifty;
+YearNode twentyThirty;
+
 //initializes weaponsShop
-ShopNode hawaii("Hawaii", "Welcome to Hawaii. A place where the only thing that beats the sand and the beach is the bombs from the Japanesse.", 1940, 0.0);
+ShopNode hawaii("Hawaii");
 //makes 3 different items
 //the stats are: health, damage, defense, fame, name, year, kind, and price 
 Item nuke(-0.75, 100., 0., 100., "Nuke", 1947, "Weapon", 1000.);
@@ -34,7 +42,7 @@ Item gun(0.0, 10.0, 0.3, 0.0, "Gun", 1905, "Weapon", 25.);
 Item pen(0., 5.0, 3.0, 10., "Pen", 1805, "Weapon", 1);
 
 //initializes armorShop
-ShopNode california("California", "Welcome to California boy. I hope that you're ready to strike it rich.", 1850, 0.3);
+ShopNode california("California");
 //makes 3 different items
 //the stats are: health, damage, defense, fame, name, year, kind, and price 
 Item logs(0., 0.5, 10., 0., "Log", 1860, "Armor", 5.25);
@@ -42,7 +50,7 @@ Item counterEspionage(0, 0.0, 30.0, -20.0, "Counter Espionage", 1955, "Armor", 1
 Item teddyBear(.5, 2.0, 5.0, 0., "Teddy Bear", 1905, "Armor", 30);
 
 //makes potionShop
-ShopNode russia("Russia", "Welcome to Russia comrade. We, the people of Russia, the free men of the glorious kingdom.", 1860, .03);
+ShopNode russia("Russia");
 //makes 3 different items
 //the stats are: health, damage, defense, fame, name, year, kind, and price 
 Item damagePotion(0., 1., 0., 0., "Damage Potion", 0, "Potion", 2.);
@@ -52,6 +60,9 @@ Item healthPotion(1., 0.0, 0.0, 0., "Health Potion", 0., "Potion", 2.);
 //contains all the talkers
 vector <talker> talkingNPCs;
 
+battleNode virginia;
+battleNode germany;
+battleNode mexico;
 //This function is the startup function and is meant to be called at the beginning of the game, so as to start up the game 
 void startup();
 
@@ -77,6 +88,8 @@ void quitGame();
 int main() {
 	//runs the startup() function at the begining of the game
 	startup();
+
+	seventeenNinety.move();
 	
 	//Selection is the number of choice that the user does, from 1 to 6 being accounted for; it set equal to zero before any choice has been made
 	int selection = 0;
@@ -157,6 +170,10 @@ void startup()
 {
 	//generates all of the presidents from the enemies and sets enemyPresidents equal to it
 	enemyPresidents = Enemy::makeBosses();
+	seventeenNinety.setBoss(&enemyPresidents[0]);
+	eighteenFifty.setBoss(&enemyPresidents[10]);
+	eighteenSixty.setBoss(&enemyPresidents[4]);
+	nineteenForty.setBoss(&enemyPresidents[7]);
 	//generates the player with his desired president choice
 	player = Player::generatePlayer();
 
@@ -178,6 +195,9 @@ void startup()
 
 	//instantiates the 2 talking NPCs
 	talkingNPCs = talker::initialize();
+	seventeenNinety.setChatter(&talkingNPCs[0]);
+	twentyThirty.setChatter(&talkingNPCs[1]);
+
 
 	inventory.pushback(nuke);
 	inventory.pushback(gun);
@@ -188,6 +208,20 @@ void startup()
 	inventory.pushback(damagePotion);
 	inventory.pushback(defensePotion);
 	inventory.pushback(healthPotion);
+
+	seventeenNinety.setValues(nullptr, &eighteenSixty, nullptr, 1790, &enemyPresidents[0], &talkingNPCs[0], nullptr, &player);
+	eighteenSixty.setValues(&seventeenNinety, &nineteenForty, &russia, 1860, &enemyPresidents[4], nullptr, &virginia, &player);
+	nineteenForty.setValues(&eighteenSixty, &eighteenFifty, &hawaii, 1940, &enemyPresidents[7], nullptr, &germany, &player);
+	eighteenFifty.setValues(&nineteenForty, &twentyThirty, &california, 1850, &enemyPresidents[10], nullptr, &mexico, &player);
+	seventeenNinety.setValues(&eighteenFifty, nullptr, nullptr, 2030, nullptr, &talkingNPCs[1], nullptr, &player);
+
+	hawaii.setValues("Hawaii", "Welcome to Hawaii. A place where the only thing that beats the sand and the beach is the bombs from the Japanesse.", 1940, 10, &nineteenForty, &player, &inventory, &germany);
+	california.setValues("California", "Welcome to California boy. I hope that you're ready to strike it rich.", 1850, 3, &eighteenFifty, &player, &inventory, &mexico);
+	russia.setValues("Russia", "Welcome to Russia comrade. We, the people of Russia, the free men of the glorious kingdom.", 1860, 7, &eighteenSixty, &player, &inventory, &virginia);
+
+	virginia.setValues(&eighteenSixty, "Welcome to the glorious country of the Confederate States of America. We do not take kindly to the Union sympathizers.", "Virginia", &player, &russia);
+	germany.setValues(&nineteenForty, "Welcome to the land of the chosen race. The land of the glorious Kaiser. If you do not agree with our ways, it is time for you to die.", "Nazi Germany", &player, &hawaii);
+	mexico.setValues(&eighteenFifty, "Bienvenido a Mexico gringo. Aca tenemos muchos tacos y muerte para los Americanos de mierda.", "Mexico", &player, &california);
 }
 
 //This overworld function is still in production, so it says so

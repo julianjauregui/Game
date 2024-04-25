@@ -13,16 +13,19 @@ void battleNode::interact()
 		system("pause");
 		system("cls");
 		year->move();
+		return;
 	}
 	else if (selection == 2) {
 		system("pause");
 		system("cls");
 		shop->move();
+		return;
 	}
 	else {
 		cout<<"You chose to die"<<endl;
 		enterBattle();
 		interact();
+		return;
 	}
 }
 
@@ -121,4 +124,23 @@ void battleNode::enterBattle() {
 string battleNode::getName()
 {
 	return name;
+}
+
+void battleNode::setYear(YearNode* anno)
+{
+	year = anno;
+}
+
+void battleNode::setShop(ShopNode* tienda)
+{
+	shop = tienda;
+}
+
+void battleNode::setValues(YearNode* current, string phrase, string nomen, Player* user, ShopNode* state)
+{
+	year = current;
+	description = phrase;
+	name = nomen;
+	player = user;
+	shop = state;
 }
