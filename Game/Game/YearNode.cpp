@@ -74,6 +74,7 @@ void YearNode::setChatter(talker* chatMan)
 
 void YearNode::move()
 {
+    cout << "Welcome to the White House. It is currently the year " << year << ". What would you like to do: " << endl;
     if (boss==nullptr) {
         chatter->talk(0);
         cout << "You have beaten the game. You may leave in peace." << endl;
@@ -111,7 +112,6 @@ void YearNode::move()
             }
         }
     }
-    cout << "Welcome to the White House. It is currently the year " << year << ". What would you like to do: "<<endl;
     if(boss != nullptr){
         cout << "1. Fight " << boss->getName()<<endl;
     }

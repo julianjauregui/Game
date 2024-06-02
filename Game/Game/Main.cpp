@@ -109,8 +109,8 @@ int main() {
 	//Selection is the number of choice that the user does, from 1 to 6 being accounted for; it set equal to zero before any choice has been made
 	int selection = 0;
 
-	/*//repeats the menu until the player chooses 6, which makes the player leave the game
-	while (selection != 6) {
+	//repeats the menu until the player chooses 6, which makes the player leave the game
+	/*while (selection != 6) {
 		
 		//Prints out the main menu choices, with each option being its own line
 		cout << "Welcome to the main Menu. Pick what you would like to do: " << endl;
@@ -264,6 +264,7 @@ void startup()
 void returnToOverworld() {
 	cout << "Sorry, it appears that the overworld is still in development." << endl;
 }
+
 /*
 //This enterBattle function, the arena whwere battles are fought
 void enterBattle() {
@@ -448,5 +449,5 @@ void chat() {
 //Also warns that the game itself is not yet set up
 void quitGame() {
 	cout << "Leaving the menu selection, but the game has not yet been set up." << endl;
-}
-*/
+}*/
+

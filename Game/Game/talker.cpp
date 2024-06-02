@@ -50,7 +50,7 @@ vector<talker> talker::initialize()
     //goes to sixth and then seventh (part of first level)
     talkerPhrase thirdBeg("It seems you've already got that spirit in you, you will need all that it gives you.", "You have not even seen the begining of my endless patriotism", "I live for one thing alone, and that is our nation");
     //goes to eigth and then ninth (part of second level)
-    talkerPhrase fourthBeg("Yes, you never ask your opponent to give you rules, it only limits you.", "So, I guess its better to ask for forgiveness than to ask for forgiveness", "I can not be limitted, I know the rules so that I may break them,");
+    talkerPhrase fourthBeg("Yes, you never ask your opponent to give you rules, it only limits you.", "So, I guess its better to ask for permission than to ask for forgiveness", "I can not be limitted, I know the rules so that I may break them,");
     //goes to tenth and then eleventh (part of second level)
     talkerPhrase fifthBeg("Well, excuse me princess, but this aint Britain any more, if you act entitled you get nothing.", "Forgive me my liege, I would like to return back to sipping my tea in my castle now.", "False, if I act entitled and I have money I can do whatever I want to.");
     //goes to twelth and then thirteenth (part of second level)
